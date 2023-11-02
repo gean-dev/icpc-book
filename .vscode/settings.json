@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "ios": "cpp",
+        "cassert": "cpp",
+        "__config": "cpp",
+        "__hash_table": "cpp",
+        "unordered_map": "cpp",
+        "cstring": "cpp"
+    }
+}

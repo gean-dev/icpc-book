@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "intelliSenseMode": "macos-gcc-arm64",
+            "compilerPath": "/opt/homebrew/bin/g++-13",
+            "cppStandard": "gnu++17",
+            "cStandard": "gnu17"
+        }
+    ],
+    "version": 4
+}
