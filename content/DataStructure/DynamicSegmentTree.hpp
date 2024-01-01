@@ -1,5 +1,5 @@
 #pragma once
-#include "../Header.hpp"
+#include "../Template/Header.hpp"
 
 template<class Node>
 struct dynamicSegtree{

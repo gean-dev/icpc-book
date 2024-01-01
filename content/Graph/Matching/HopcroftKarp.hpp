@@ -1,5 +1,5 @@
-#pragma once;
-#include "Header.hpp"
+#pragma once
+#include "../../Template/Header.hpp"
 
 /*
     Hopcroft-Karp Algorithm
