@@ -7,7 +7,7 @@ tests="$(find $DIR/test -name '*.cpp')"
 declare -i pass=0
 declare -i fail=0
 failTests=""
-ulimit -s 524288
+# ulimit -s 524288
 startTime=$(date +%s%N)
 
 for test in $tests; do

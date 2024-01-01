@@ -1,5 +1,5 @@
 #pragma once
-#include "../../Template/Header.hpp"
+#include "../Template/Header.hpp"
 
 /*
     Dinic's Algorithm
