@@ -1,11 +1,11 @@
-#pragma once;
-#include "Header.hpp"
-
 /*
     Hopcroft-Karp Algorithm
     Description: Fast bipartite matching algorithm.
     Time: O(E \sqrt{V})
 */
+
+#pragma once
+#include "../Template/Header.hpp"
 
 struct HopcroftKarp{
     int n,m;

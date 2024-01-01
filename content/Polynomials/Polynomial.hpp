@@ -1,6 +1,6 @@
 #pragma once
-#include "Header.hpp"
-#include "NumberTheory/ModularArithmetic.hpp"
+#include "../Template/Header.hpp"
+#include "../NumberTheory/ModularArithmetic.hpp"
 #include "NTT.hpp"
 
 #define T mint
