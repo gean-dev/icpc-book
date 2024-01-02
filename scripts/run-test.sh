@@ -2,13 +2,13 @@
 
 DIR=${1:-.}
 
-tests="$(find $DIR/test -name '*.cpp')"
+tests="$(find $DIR/tests -name '*.cpp')"
 
 declare -i pass=0
 declare -i fail=0
 failTests=""
 # ulimit -s 524288
-startTime=$(date +%s%N)
+startTime=`date +%s.%N`
 
 for test in $tests; do
   echo "$(basename $test): "
@@ -24,7 +24,10 @@ for test in $tests; do
   rm -f a.out
   echo
 done
-endTime=$(date +%s%N)
+endTime=`date +%s.%N`
+
+testingTime=$( echo "$endTime - $startTime" | bc -l )
+echo "Testing took $testingTime seconds"
 
 echo "$pass/$(($pass+$fail)) tests passed"
 if (($fail==0)); then
@@ -34,6 +37,3 @@ else
     echo -e "These tests failed: \n $failTests"
     exit 1
 fi
-
-testingTime = $( echo "$endTime - $startTime" | bc -l )
-echo "Testing took $testingTime seconds"
