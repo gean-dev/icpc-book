@@ -8,7 +8,6 @@ tests="$(find $DIR/content -name '*.hpp')"
 declare -i pass=0
 declare -i fail=0
 failTests=""
-startTime=$(date +%s%N)
 
 for test in $tests; do
   echo "$(basename $test): "
@@ -24,7 +23,6 @@ for test in $tests; do
   rm -f a.out
   echo
 done
-endTime=$(date +%s%N)
 
 echo "$pass/$(($pass+$fail)) tests passed"
 if (($fail==0)); then
@@ -34,6 +32,3 @@ else
     echo -e "These tests failed: \n $failTests"
     exit 1
 fi
-
-testingTime = $( echo "$endTime - $startTime" | bc -l )
-echo "Testing took $testingTime seconds"
