@@ -2,7 +2,7 @@
 #include "../Template/Header.hpp"
 
 /*
-    Lazy Segment Tree
+    Dynamic Segment Tree
     Verification:
         - https://cses.fi/problemset/task/2166
         - https://cses.fi/problemset/task/1735
