@@ -3,5 +3,6 @@
 ## TODO
 
 - Rewrite test
-- Rewrite Polynomials
-- Modular Arithmatic for Arbitary Modulii
+- Rewrite polynomials
+- Modular arithmatic for arbitary modulii
+- Stress test everything 🤡
