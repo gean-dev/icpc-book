@@ -1,12 +1,25 @@
-#pragma once
-#include "../Template/Header.hpp"
+#include<bits/stdc++.h>
+#define sz(x) (int)(x).size()
+#define all(x) (x).begin(),(x).end()
+#define rall(x) (x).rbegin(),(x).rend()
 
-/*
-    Lazy Segment Tree
-    Verification:
-        - https://cses.fi/problemset/task/2166
-        - https://cses.fi/problemset/task/1735
-*/
+using namespace std;
+
+using ll = long long;
+using db = long double;
+using vi = vector<int>;
+using vl = vector<ll>;
+using vd = vector<db>;
+using pii = pair<int,int>;
+using pll = pair<ll,ll>;
+using pdd = pair<db,db>;
+const int INF=0x3fffffff;
+// const int MOD=1000000007;
+const int MOD=998244353;
+const ll LINF=0x1fffffffffffffff;
+const db DINF=numeric_limits<db>::infinity();
+const db EPS=1e-9;
+const db PI=acos(db(-1));
 
 template<class Node,class Tag>
 struct DynamicSegTree{
@@ -17,7 +30,6 @@ struct DynamicSegTree{
         Tag lz;
         pnode l,r;
         node():val(Node()),lz(Tag()),l(nullptr),r(nullptr){}
-        node(Node v,Tag t):val(v),lz(t),l(nullptr),r(nullptr){}
     };
     ll n;
     pnode rt;
@@ -106,45 +118,46 @@ struct DynamicSegTree{
         return findlast(0,n-1,rt,x,y,f);
     }
 };
-struct AddTag{
+struct Tag{
     ll val;
-    AddTag():val(0){}
-    AddTag(ll v):val(v){}
-    void apply(ll l,ll r,const AddTag &v){
+    Tag():val(0){}
+    Tag(ll v):val(v){}
+    void apply(ll l,ll r,const Tag &v){
         val+=v.val;
     }
 };
-struct MaxNode{
+struct Node{
     ll val;
-    MaxNode():val(-LINF){}
-    MaxNode(ll x):val(x){}
-    void apply(ll l,ll r,const AddTag &v){
+    Node():val(-LINF){}
+    Node(ll v):val(v){}
+    void apply(ll l,ll r,const Tag &v){
         val+=v.val;
     }
-    friend MaxNode operator+(const MaxNode &lhs,const MaxNode &rhs){
-        return MaxNode(max(lhs.val,rhs.val));
-    }
-};
-struct MinNode{
-    ll val;
-    MinNode():val(LINF){}
-    MinNode(ll v):val(v){}
-    void apply(ll l,ll r,const AddTag &v){
-        val+=v.val;
-    }
-    friend MinNode operator+(const MinNode &lhs,const MinNode &rhs){
-        return MinNode(min(lhs.val,rhs.val));
-    }
-};
-struct SumNode{
-    ll val;
-    SumNode():val(0){}
-    SumNode(ll v):val(v){}
-    void apply(ll l,ll r,const AddTag &v){
-        val+=v.val*(r-l+1);
-    }
-    friend SumNode operator+(const SumNode &lhs,const SumNode &rhs){
-        return SumNode(lhs.val+rhs.val);
+    friend Node operator+(const Node &lhs,const Node &rhs){
+        return Node(max(lhs.val,rhs.val));
     }
 };
 
+int main(){
+    cin.tie(nullptr)->sync_with_stdio(false);
+    int n,q;
+    cin >> n >> q;
+    vl a(n);
+    for(auto &x:a)cin >> x;
+    DynamicSegTree<Node,Tag> s(n);
+    s.update(0,n-1,LINF);
+    for(int i=0;i<n;i++)s.update(i,n-1,a[i]);
+    while(q--){
+        int t,x,y;
+        cin >> t >> x >> y;
+        if(t==1){
+            x--;
+            ll d=y-a[x];
+            a[x]+=d;
+            s.update(x,n-1,d);
+        }else{
+            x--,y--;
+            cout << max(0ll,s.query(x,y).val-(x>0?s.query(x-1,x-1).val:0)) << "\n";
+        }
+    }
+}
