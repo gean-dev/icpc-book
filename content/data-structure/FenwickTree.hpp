@@ -1,5 +1,5 @@
 #pragma once
-#include "../Template/Header.hpp"
+#include "../template/Header.hpp"
 
 template<class T>
 struct fenwick{
