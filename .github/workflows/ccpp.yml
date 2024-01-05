@@ -2,9 +2,9 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [main]
+    branches: "*"
   pull_request:
-    branches: [main]
+    branches: "*"
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
       - name: Install pdflatex
         run: sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra
       - name: List Content
-        run: ls
+        run: ls content/
       - name: Compile All
         run: make compile-all
       - name: Run Tests
