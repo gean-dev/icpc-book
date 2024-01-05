@@ -1,0 +1,9 @@
+\chapter{Numerical}
+
+\section{Newton's Method}
+if $F(Q) = 0$, then $Q_{2n} \equiv Q_{n} - \frac{F(Q_{n})}{F'(Q_{n})}\;(\mathrm{mod} x^{2n})$ 
+\[Q = P^{-1}: Q_{2n} \equiv Q_{n} \cdot (2 - P \cdot Q_{n}^2)\;(\mathrm{mod}\; x^{2n}) \]
+\[Q = \ln{P} = \int\frac{P'}{P} \mathrm{d}x \]
+\[Q = e^{p}: Q_{2n} \equiv Q_{n}(1 + P - \ln{Q_n})\;(\mathrm{mod}\; x^{2n}) \]
+\[Q = \sqrt{P}: Q_{2n} \equiv \frac{1}{2}(Q_{n} + P \cdot Q_{n}^{-1})\;(\mathrm{mod}\; x^{2n}) \]
+\[Q = P^{k} = \alpha^{k}x^{kt}e^{k\ln{T}}; P = \alpha \cdot x^{t} \cdot T, T(0) = 1 \]
