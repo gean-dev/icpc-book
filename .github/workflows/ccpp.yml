@@ -13,7 +13,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Install pdflatex
+        run: sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra
       - name: Compile All
         run: make compile-all
       - name: Run Tests
         run: make test-all
+      - name: Make Book
+        run: make book
