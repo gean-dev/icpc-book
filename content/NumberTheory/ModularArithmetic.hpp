@@ -1,6 +1,6 @@
 #pragma once
 #include "../Template/Header.hpp"
-#include "Binpow.hpp"
+#include "BinPow.hpp"
 
 struct mint{
     ll x;
