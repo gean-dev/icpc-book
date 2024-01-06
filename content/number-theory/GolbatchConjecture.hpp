@@ -6,7 +6,7 @@
  * Description: Find two prime numbers which sum equals $s$
  * Time: $O(N\log{N})$
  */
-
+#pragma once
 #include "FastEratosthenes.hpp"
 
 pair<int, int> goldbatchConjecture(int s, vi pr = {}){

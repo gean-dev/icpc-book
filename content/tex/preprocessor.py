@@ -94,6 +94,8 @@ def processwithcomments(caption, instream, outstream, listingslang):
         # Remove '#pragma once' lines
         if line == "#pragma once":
             continue
+        if line == '#include "..//template//Header.hpp"':
+            continue
         if had_comment and not line:
             continue
         # Check includes

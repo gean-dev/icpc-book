@@ -33,7 +33,7 @@ vi eratosthenes() {
   }
   for(int L=1; L<=R; L+=S) {
     array<bool, S> block{};
-    for(auto [p, idx]: cp) {
+    for(auto &[p, idx]: cp) {
       for(int i=idx; i<S+L; idx=(i+=p)) {
         block[i - L] = 1;
       }
