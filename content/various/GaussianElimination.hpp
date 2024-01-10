@@ -4,6 +4,9 @@
  * License: CC0
  * Description: Gaussian Elimination
  */
+
+#pragma once
+#include "../template/Header.hpp"
 struct gauss {
   int n, sz;
   vector<ll> basis;
