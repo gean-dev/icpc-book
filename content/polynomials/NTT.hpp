@@ -1,5 +1,6 @@
 #pragma once
 #include "../template/Header.hpp"
+#include "../number-theory/BinPow.hpp"
 #include "../number-theory/ModularArithmetic.hpp"
 
 namespace ntt{
