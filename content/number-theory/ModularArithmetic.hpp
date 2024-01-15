@@ -26,6 +26,7 @@ struct mint{
     friend ostream &operator<<(ostream &os,const mint &o){return os<<o.x;}
     friend constexpr bool operator==(const mint &lhs,const mint &rhs){return lhs.x==rhs.x;};
     friend constexpr bool operator!=(const mint &lhs,const mint &rhs){return lhs.x!=rhs.x;};
+    friend constexpr bool operator<(const mint &lhs,const mint &rhs){return lhs.x!=rhs.x;}; // for std::map
 };
 using vm = vector<mint>;
 mint invmod(int x){
