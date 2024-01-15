@@ -1,10 +1,24 @@
-/**
- * Author: Teetat Thamronglak
- * Date: 2024-01-15
- * Description: modular arithmetic operations
- */
-#pragma once
-#include "../template/Header.hpp"
+#include<bits/stdc++.h>
+#define sz(x) (int)(x).size()
+#define all(x) (x).begin(),(x).end()
+
+using namespace std;
+
+using ll = long long;
+using db = long double;
+using vi = vector<int>;
+using vl = vector<ll>;
+using vd = vector<db>;
+using pii = pair<int,int>;
+using pll = pair<ll,ll>;
+using pdd = pair<db,db>;
+const int INF=0x3fffffff;
+// const int MOD=1000000007;
+const int MOD=998244353;
+const ll LINF=0x1fffffffffffffff;
+const db DINF=numeric_limits<db>::infinity();
+const db EPS=1e-9;
+const db PI=acos(db(-1));
 
 ll modmul(ll a,ll b,ll mod){
     ll res=(a*b-ll(1.l*a*b/mod)*mod)%mod;
@@ -63,4 +77,31 @@ mint invmod(int x){
     for(int i=sz(invs);i<=x;i++)
         invs.push_back(-MOD/i*invs[MOD%i]);
     return invs[x];
+}
+
+using Z = Mint<0ll>;
+
+int main(){
+    cin.tie(nullptr)->sync_with_stdio(false);
+    ll n,m;
+    while(cin >> m >> n){
+        if(n==0&&m==0)break;
+        Z::setMod(m);
+        while(n--){
+            ll a,b;
+            char op;
+            cin >> a >> op >> b;
+            if(op=='+'){
+                cout << Z(a)+Z(b) << "\n";
+            }else if(op=='-'){
+                cout << Z(a)-Z(b) << "\n";
+            }else if(op=='*'){
+                cout << Z(a)*Z(b) << "\n";
+            }else if(gcd(b,m)==1){
+                cout << Z(a)/Z(b) << "\n";
+            }else{
+                cout << "-1\n";
+            }
+        }
+    }
 }
