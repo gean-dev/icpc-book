@@ -1,8 +1,8 @@
 /**
- * Author: Teetat Thamronglak
+ * Author: Teetat T.
  * Date: 2024-01-15
- * Source: cp-algorithms
- * Description: extended euclid algorithm;
+ * Source: https://cp-algorithms.com/algebra/extended-euclid-algorithm.html
+ * Description: Extended Euclid algorithm for solving diophantine equation (ax + by = gcd(a, b)).
  * Time: $O(\log\max\{a,b\})$
  */
 #pragma once
