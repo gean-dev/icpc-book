@@ -52,7 +52,7 @@ struct Mint{
     friend ostream &operator<<(ostream &os,const Mint &o){return os<<o.x;}
     friend constexpr bool operator==(const Mint &lhs,const Mint &rhs){return lhs.x==rhs.x;}
     friend constexpr bool operator!=(const Mint &lhs,const Mint &rhs){return lhs.x!=rhs.x;}
-    friend constexpr bool operator<(const Mint &lhs,const Mint &rhs){return lhs.x!=rhs.x;} // for std::map
+    friend constexpr bool operator<(const Mint &lhs,const Mint &rhs){return lhs.x<rhs.x;} // for std::map
 };
 template<>
 ll Mint<0ll>::Mod=ll(1e18)+9;
