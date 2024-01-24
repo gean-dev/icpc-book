@@ -1,3 +1,8 @@
+/**
+ * Author: Teetat T.
+ * Date: 2024-01-24
+ * Description: basic operations of formal power series
+ */
 #pragma once
 #include "../number-theory/ModularArithmetic.hpp"
 #include "FFT.hpp"
