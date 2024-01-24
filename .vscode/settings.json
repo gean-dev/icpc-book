@@ -7,6 +7,8 @@
         "unordered_map": "cpp",
         "cstring": "cpp",
         "iosfwd": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "complex": "cpp",
+        "cmath": "cpp"
     }
 }
