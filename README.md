@@ -3,5 +3,4 @@
 ## TODO
 
 - Rewrite test
-- Rewrite polynomials
 - Stress test everything 🤡
