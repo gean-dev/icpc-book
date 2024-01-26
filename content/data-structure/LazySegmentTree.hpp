@@ -1,12 +1,11 @@
+/**
+ * Author: Teetat T.
+ * Date: 2024-01-15
+ * Description: Segment Tree with Lazy Propagation
+ */
+
 #pragma once
 #include "../template/Header.hpp"
-
-/*
-    Lazy Segment Tree
-    Verification:
-        - https://cses.fi/problemset/task/2166
-        - https://cses.fi/problemset/task/1735
-*/
 
 template<class Node,class Tag>
 struct LazySegTree{

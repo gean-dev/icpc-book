@@ -1,3 +1,9 @@
+/**
+ * Author: Teetat T.
+ * Date: 2024-01-15
+ * Description: Fenwick / Binary Indexed Tree
+ */
+
 #pragma once
 #include "../template/Header.hpp"
 

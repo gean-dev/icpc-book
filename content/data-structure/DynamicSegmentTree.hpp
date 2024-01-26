@@ -1,12 +1,10 @@
+/**
+ * Author: Teetat T.
+ * Date: 2024-01-15
+ * Description: Dynamic/Sparse Segment Tree
+ */
 #pragma once
 #include "../template/Header.hpp"
-
-/*
-    Dynamic Segment Tree
-    Verification:
-        - https://cses.fi/problemset/task/2166
-        - https://cses.fi/problemset/task/1735
-*/
 
 template<class Node,class Tag>
 struct DynamicSegTree{
