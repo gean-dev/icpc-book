@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
         for(auto &x:a)x=rng(-X,X);
         for(auto &x:b)x=rng(-X,X);
         auto sol1=brute(a,b);
-        auto sol2=fft::conv<ll>(a,b);
+        auto sol2=FFT<ll>::conv(a,b);
         assert(sol1==sol2);
     };
     for(int i=1;i<=T;i++)test();

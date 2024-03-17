@@ -1,45 +1,45 @@
 /**
  * Author: Teetat T.
- * Date: 2024-01-15
+ * Date: 2024-03-17
  * Description: modular arithmetic operations
  */
 #pragma once
 #include "../template/Header.hpp"
 
-ll modmul(ll a,ll b,ll mod){
-    ll res=(a*b-ll(1.l*a*b/mod)*mod)%mod;
-    if(res<0)res+=mod;
-    return res;
-}
-
-ll modinv(ll a,ll b){
-    ll x=0,x1=1;
-    while(a!=0){
-        ll q=b/a;
-        b-=q*a;
-        x-=q*x1;
-        swap(a,b);
-        swap(x,x1);
-    }
-    return x;
-}
-
-template<ll M>
+template<ll M,ll root=0>
 struct Mint{
     ll x;
     constexpr Mint():x(0){}
-    constexpr Mint(ll x):x(norm(x%getMod())){}
+    constexpr Mint(ll x):x(norm(x%get_mod())){}
     static ll Mod;
-    constexpr static ll getMod(){return M>0?M:Mod;}
-    constexpr static void setMod(ll Mod_){Mod=Mod_;}
-    constexpr ll norm(ll x)const{if(x<0)x+=getMod();if(x>=getMod())x-=getMod();return x;}
+    static constexpr ll get_mod(){return M>0?M:Mod;}
+    static constexpr void set_mod(ll Mod_){Mod=Mod_;}
+    static constexpr Mint get_root(){return Mint(root);}
+    constexpr ll norm(ll x)const{if(x<0)x+=get_mod();if(x>=get_mod())x-=get_mod();return x;}
     explicit constexpr operator ll()const{return x;}
-    constexpr Mint operator-()const{Mint res;res.x=norm(-x);return res;}
-    constexpr Mint inv()const{return modinv(x,getMod());}
+    constexpr Mint operator-()const{return Mint()-Mint(*this);};
+    constexpr Mint operator+()const{return Mint(*this);};
+    constexpr Mint inv()const{
+        ll a=x,b=get_mod(),u=1,v=0,q;
+        while(b>0){
+            q=a/b;
+            a-=q*b;
+            u-=q*v;
+            swap(a,b);
+            swap(u,v);
+        }
+        return Mint(u);
+    }
+    constexpr ll mul(ll a,ll b)const{
+        ll mod=get_mod();
+        ll res=(a*b-ll(1.l*a*b/mod)*mod)%mod;
+        if(res<0)res+=mod;
+        return res;
+    }
     constexpr Mint &operator+=(const Mint &rhs){x=norm(x+rhs.x);return *this;}
     constexpr Mint &operator-=(const Mint &rhs){x=norm(x-rhs.x);return *this;}
-    constexpr Mint &operator*=(const Mint &rhs){x=modmul(x,rhs.x,getMod());return *this;}
-    constexpr Mint &operator/=(const Mint &rhs){x=modmul(x,rhs.inv().x,getMod());return *this;}
+    constexpr Mint &operator*=(const Mint &rhs){x=mul(x,rhs.x);return *this;}
+    constexpr Mint &operator/=(const Mint &rhs){x=mul(x,rhs.inv().x);return *this;}
     constexpr Mint &operator++(){return *this+=1;}
     constexpr Mint &operator--(){return *this-=1;}
     constexpr Mint operator++(int){Mint res=*this;*this+=1;return res;}
@@ -56,11 +56,5 @@ struct Mint{
 };
 template<>
 ll Mint<0ll>::Mod=ll(1e18)+9;
-using mint = Mint<MOD>;
+using mint = Mint<MOD,3>;
 using vm = vector<mint>;
-mint invmod(int x){
-    static vm invs{0,1};
-    for(int i=sz(invs);i<=x;i++)
-        invs.push_back(-MOD/i*invs[MOD%i]);
-    return invs[x];
-}
