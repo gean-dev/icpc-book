@@ -13,6 +13,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Setup Machine
+        run: sudo apt-get update && sudo apt-get upgrade
       - name: Install pdflatex
         run: sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra
       - name: Compile All
