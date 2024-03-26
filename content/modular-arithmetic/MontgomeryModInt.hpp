@@ -3,7 +3,7 @@
  * Date: 2024-03-17
  * Description: modular arithmetic operators using Montgomery space
  */
-#pragma once;
+#pragma once
 #include "../template/Header.hpp"
 
 template<uint32_t mod,uint32_t root=0>
