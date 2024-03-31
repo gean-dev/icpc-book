@@ -5,7 +5,7 @@
  */
 #pragma once
 #include "../template/Header.hpp"
-#include "../number-theory/BinPow.hpp"
+#include "../modular-arithmetic/BinPow.hpp"
 #include "../modular-arithmetic/MontgomeryModInt.hpp"
 
 template<class mint=mint>
