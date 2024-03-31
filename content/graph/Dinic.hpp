@@ -1,15 +1,9 @@
-/*
-    Dinic's Algorithm
-    Description: Fast max-flow algorithm.
-    Time: $O(VE\log U)$ where $U = \max |\text{cap}|$
-    Verification:
-        - https://cses.fi/problemset/task/1694/
-        - https://cses.fi/problemset/task/1711/
-        - https://www.spoj.com/problems/FASTFLOW/
-        - https://vn.spoj.com/problems/FFLOW/
-        - https://loj.ac/s/1960971
-*/
-
+/**
+ * Author: Teetat T.
+ * Date: 2024-03-31
+ * Description: Fast max-flow algorithm.
+ * Time: $O(VE\log U)$ where $U = \max |\text{cap}|$
+ */
 #pragma once
 #include "../template/Header.hpp"
 

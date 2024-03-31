@@ -2,7 +2,7 @@
  * Author: Borworntat D.
  * Date: 2024-01-26
  * Description: Kuhn Algorithm to find maximum bipartite matching or find augmenting path in bipartite graph.
- * Time: O(VE)
+ * Time: $O(VE)$
  */
 #pragma once
 #include "../template/Header.hpp"

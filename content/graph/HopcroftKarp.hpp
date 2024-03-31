@@ -1,8 +1,9 @@
-/*
-    Hopcroft-Karp Algorithm
-    Description: Fast bipartite matching algorithm.
-    Time: O(E \sqrt{V})
-*/
+/**
+ * Author: Teetat T.
+ * Date: 2024-03-31
+ * Description: Fast bipartite matching algorithm.
+ * Time: $O(E\sqrt{V})$
+ */
 
 #pragma once
 #include "../template/Header.hpp"
