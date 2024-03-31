@@ -6,9 +6,10 @@
 #pragma once
 #include "NTT.hpp"
 
-template<class mint=mint>
-struct FPS:vector<mint>{
+template<class mint>
+struct FormalPowerSeries:vector<mint>{
     using vector<mint>::vector;
+    using FPS = FormalPowerSeries;
 
     FPS &operator+=(const FPS &rhs){
         if(rhs.size()>this->size())this->resize(rhs.size());
@@ -140,3 +141,4 @@ struct FPS:vector<mint>{
         return FPS(deg,mint(0));
     }
 };
+using FPS=FormalPowerSeries<mint>;

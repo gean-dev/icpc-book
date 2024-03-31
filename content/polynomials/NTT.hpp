@@ -13,7 +13,7 @@ struct NTT{
 	using vm = vector<mint>;
 	
 	static constexpr mint root=mint::get_root();
-    static_assert(root>0);
+    static_assert(root!=0);
 
 	static void ntt(vm &a){
 		int n=a.size(),L=31-__builtin_clz(n);

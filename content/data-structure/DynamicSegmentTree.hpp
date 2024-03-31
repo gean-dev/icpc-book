@@ -36,7 +36,7 @@ struct DynamicSegTree{
         t->lz.apply(l,r,v);
     }
     void push(ll l,ll r,pnode &t){
-        ll m=(l+r)/2;
+        ll m=l+(r-l)/2;
         apply(l,m,t->l,t->lz);
         apply(m+1,r,t->r,t->lz);
         t->lz=Tag();
@@ -44,7 +44,7 @@ struct DynamicSegTree{
     void modify(ll l,ll r,pnode &t,ll x,const Node &v){
         if(x<l||r<x)return;
         if(l==r)return void(t->val=v);
-        ll m=(l+r)/2;
+        ll m=l+(r-l)/2;
         push(l,r,t);
         modify(l,m,t->l,x,v);
         modify(m+1,r,t->r,x,v);
@@ -56,7 +56,7 @@ struct DynamicSegTree{
     void update(ll l,ll r,pnode &t,ll x,ll y,const Tag &v){
         if(y<l||r<x)return;
         if(x<=l&&r<=y)return apply(l,r,t,v);
-        ll m=(l+r)/2;
+        ll m=l+(r-l)/2;
         push(l,r,t);
         update(l,m,t->l,x,y,v);
         update(m+1,r,t->r,x,y,v);
@@ -68,7 +68,7 @@ struct DynamicSegTree{
     Node query(ll l,ll r,pnode &t,ll x,ll y){
         if(y<l||r<x)return Node();
         if(x<=l&&r<=y)return t->val;
-        ll m=(l+r)/2;
+        ll m=l+(r-l)/2;
         push(l,r,t);
         return query(l,m,t->l,x,y)+query(m+1,r,t->r,x,y);
     }
@@ -79,7 +79,7 @@ struct DynamicSegTree{
     ll findfirst(ll l,ll r,pnode t,ll x,ll y,const F &f){
         if(y<l||r<x||!f(t->val))return -1;
         if(l==r)return l;
-        ll m=(l+r)/2;
+        ll m=l+(r-l)/2;
         push(l,r,t);
         ll res=findfirst(l,m,t->l,x,y,f);
         if(res==-1)res=findfirst(m+1,r,t->r,x,y,f);
@@ -93,7 +93,7 @@ struct DynamicSegTree{
     ll findlast(ll l,ll r,pnode t,ll x,ll y,const F &f){
         if(y<l||r<x||!t||!f(t->val))return -1;
         if(l==r)return l;
-        ll m=(l+r)/2;
+        ll m=l+(r-l)/2;
         push(l,r,t);
         ll res=findlast(m+1,r,t->r,x,y,f);
         if(res==-1)res=findlast(l,m,t->l,x,y,f);
