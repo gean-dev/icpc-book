@@ -11,10 +11,10 @@ test-all:
 	./scripts/run-test.sh .
 fast: | build
 	$(LATEXCMD) content/main.tex
-	cp build/book.pdf book.pdf
+	cp build/main.pdf main.pdf
 book: | build
 	$(LATEXCMD) content/main.tex && $(LATEXCMD) content/main.tex
-	cp build/book.pdf book.pdf
+	cp build/main.pdf main.pdf
 build:
 	mkdir -p build
 clean:
