@@ -8,10 +8,10 @@
  */
 
 template<class T>
-struct fenwick{
+struct Fenwick{
     int n;
     vector<T> t;
-    fenwick(int n=0){init(n);}
+    Fenwick(int n=0){init(n);}
     void init(int _n){
         n=_n;
         t.assign(n+1,T{});
