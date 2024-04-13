@@ -1,11 +1,11 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2024-04-13
  * Description: Splay Tree. splay(u) will make node u be the root of the tree in amortized O(log n) time.
  */
-
-#pragma once
-#include "../template/Header.hpp"
 
 template<class Node>
 struct SplayTreeBase{
@@ -119,3 +119,4 @@ struct SplayTreeBase{
         return build(0,v.size()-1);
     }
 };
+

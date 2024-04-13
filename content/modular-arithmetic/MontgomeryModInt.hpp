@@ -1,10 +1,11 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2024-03-17
  * Description: modular arithmetic operators using Montgomery space
  */
-#pragma once
-#include "../template/Header.hpp"
 
 template<uint32_t mod,uint32_t root=0>
 struct MontgomeryModInt{
@@ -111,3 +112,4 @@ struct MontgomeryModInt{
 };
 using mint = MontgomeryModInt<MOD,3>;
 using vm = vector<mint>;
+

@@ -1,10 +1,11 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2024-04-05
  * Description: Graph base template.
  */
-#pragma once
-#include "../template/Header.hpp"
 
 template<class T>
 struct Edge{
@@ -94,3 +95,4 @@ struct Graph{
         return outdeg[u];
     }
 };
+

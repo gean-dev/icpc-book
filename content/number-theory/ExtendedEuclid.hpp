@@ -1,3 +1,6 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2024-01-15
@@ -5,8 +8,6 @@
  * Description: Extended Euclid algorithm for solving diophantine equation (ax + by = gcd(a, b)).
  * Time: $O(\log\max\{a,b\})$
  */
-#pragma once
-#include "../template/Header.hpp"
 
 pair<ll,ll> euclid(ll a,ll b){
     ll x=1,y=0,x1=0,y1=1;
@@ -21,3 +22,4 @@ pair<ll,ll> euclid(ll a,ll b){
     }
     return {x,y};
 }
+

@@ -1,12 +1,12 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2024-03-31
  * Description: Fast bipartite matching algorithm.
  * Time: $O(E\sqrt{V})$
  */
-
-#pragma once
-#include "../template/Header.hpp"
 
 struct HopcroftKarp{
     int n,m;
@@ -60,3 +60,4 @@ struct HopcroftKarp{
         return match;
     }
 };
+

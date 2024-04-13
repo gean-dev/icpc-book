@@ -1,47 +1,48 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2024-01-15
  * Description: Dynamic/Sparse Segment Tree
  */
-#pragma once
-#include "../template/Header.hpp"
 
-template<class Node,class Tag>
+template<class Info,class Tag>
 struct DynamicSegTree{
-    struct node;
-    using pnode = node*;
-    struct node{
-        Node val;
+    struct Node;
+    using Ptr = Node*;
+    struct Node{
+        Info val;
         Tag lz;
-        pnode l,r;
-        node():val(Node()),lz(Tag()),l(nullptr),r(nullptr){}
-        node(Node v,Tag t):val(v),lz(t),l(nullptr),r(nullptr){}
+        Ptr l,r;
+        Node():val(Info()),lz(Tag()),l(nullptr),r(nullptr){}
+        Node(Info v,Tag t):val(v),lz(t),l(nullptr),r(nullptr){}
     };
     ll n;
-    pnode rt;
+    Ptr rt;
     DynamicSegTree(){}
     DynamicSegTree(ll n){init(n);}
     void init(ll _n){
-        n=_n,rt=new node();
+        n=_n,rt=new Node();
     }
-    Node val(pnode t){
-        return t?t->val:Node();
+    Info val(Ptr t){
+        return t?t->val:Info();
     }
-    void pull(pnode &t){
+    void pull(Ptr &t){
         t->val=val(t->l)+val(t->r);
     }
-    void apply(ll l,ll r,pnode &t,const Tag &v){
-        if(!t)t=new node();
+    void apply(ll l,ll r,Ptr &t,const Tag &v){
+        if(!t)t=new Node();
         t->val.apply(l,r,v);
         t->lz.apply(l,r,v);
     }
-    void push(ll l,ll r,pnode &t){
+    void push(ll l,ll r,Ptr &t){
         ll m=l+(r-l)/2;
         apply(l,m,t->l,t->lz);
         apply(m+1,r,t->r,t->lz);
         t->lz=Tag();
     }
-    void modify(ll l,ll r,pnode &t,ll x,const Node &v){
+    void modify(ll l,ll r,Ptr &t,ll x,const Info &v){
         if(x<l||r<x)return;
         if(l==r)return void(t->val=v);
         ll m=l+(r-l)/2;
@@ -50,10 +51,10 @@ struct DynamicSegTree{
         modify(m+1,r,t->r,x,v);
         pull(t);
     }
-    void modify(ll x,const Node &v){
+    void modify(ll x,const Info &v){
         modify(0,n-1,rt,x,v);
     }
-    void update(ll l,ll r,pnode &t,ll x,ll y,const Tag &v){
+    void update(ll l,ll r,Ptr &t,ll x,ll y,const Tag &v){
         if(y<l||r<x)return;
         if(x<=l&&r<=y)return apply(l,r,t,v);
         ll m=l+(r-l)/2;
@@ -65,18 +66,18 @@ struct DynamicSegTree{
     void update(ll x,ll y,const Tag &v){
         update(0,n-1,rt,x,y,v);
     }
-    Node query(ll l,ll r,pnode &t,ll x,ll y){
-        if(y<l||r<x)return Node();
+    Info query(ll l,ll r,Ptr &t,ll x,ll y){
+        if(y<l||r<x)return Info();
         if(x<=l&&r<=y)return t->val;
         ll m=l+(r-l)/2;
         push(l,r,t);
         return query(l,m,t->l,x,y)+query(m+1,r,t->r,x,y);
     }
-    Node query(ll x,ll y){
+    Info query(ll x,ll y){
         return query(0,n-1,rt,x,y);
     }
     template<class F>
-    ll findfirst(ll l,ll r,pnode t,ll x,ll y,const F &f){
+    ll findfirst(ll l,ll r,Ptr t,ll x,ll y,const F &f){
         if(y<l||r<x||!f(t->val))return -1;
         if(l==r)return l;
         ll m=l+(r-l)/2;
@@ -90,7 +91,7 @@ struct DynamicSegTree{
         return findfirst(0,n-1,rt,x,y,f);
     }
     template<class F>
-    ll findlast(ll l,ll r,pnode t,ll x,ll y,const F &f){
+    ll findlast(ll l,ll r,Ptr t,ll x,ll y,const F &f){
         if(y<l||r<x||!t||!f(t->val))return -1;
         if(l==r)return l;
         ll m=l+(r-l)/2;

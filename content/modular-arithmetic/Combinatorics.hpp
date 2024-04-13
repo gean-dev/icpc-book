@@ -1,11 +1,12 @@
+#pragma once
+#include "../template/Header.hpp"
+#include "MontgomeryModInt.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2024-03-17
  * Description: basic combinatorics functions
  */
-#pragma once
-#include "../template/Header.hpp"
-#include "MontgomeryModInt.hpp"
 
 template<class mint=mint>
 mint invmod(int x){
@@ -43,3 +44,4 @@ mint nCr(int n,int r){
     if(n<0||r<0||n<r)return mint(0);
     return fac<mint>(n)*invfac<mint>(n-r)*invfac<mint>(r);
 }
+

@@ -1,10 +1,11 @@
+#pragma once
+#include "NTT.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2024-03-17
  * Description: basic operations of formal power series
  */
-#pragma once
-#include "NTT.hpp"
 
 template<class mint>
 struct FormalPowerSeries:vector<mint>{
@@ -142,3 +143,4 @@ struct FormalPowerSeries:vector<mint>{
     }
 };
 using FPS=FormalPowerSeries<mint>;
+

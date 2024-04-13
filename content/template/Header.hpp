@@ -20,3 +20,4 @@ const ll LINF = 0x1fffffffffffffff;
 const db DINF = numeric_limits<db>::infinity();
 const db EPS = 1e-9;
 const db PI = acos(db(-1));
+

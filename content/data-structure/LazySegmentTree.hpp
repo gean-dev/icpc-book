@@ -1,26 +1,26 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2024-01-15
  * Description: Segment Tree with Lazy Propagation
  */
 
-#pragma once
-#include "../template/Header.hpp"
-
-template<class Node,class Tag>
-struct LazySegTree{
+template<class Info,class Tag>
+struct LazySegmentTree{
     int n;
-    vector<Node> t;
+    vector<Info> t;
     vector<Tag> lz;
-    LazySegTree(){}
-    LazySegTree(int n,Node v=Node()){init(n,v);}
+    LazySegmentTree(){}
+    LazySegmentTree(int n,Info v=Info()){init(n,v);}
     template<class T>
-    LazySegTree(const vector<T> &a){init(a);}
-    void init(int n,Node v=Node()){init(vector<Node>(n,v));}
+    LazySegmentTree(const vector<T> &a){init(a);}
+    void init(int n,Info v=Info()){init(vector<Info>(n,v));}
     template<class T>
     void init(const vector<T> &a){
         n=sz(a);
-        t.assign(4<<31-__builtin_clz(n),Node());
+        t.assign(4<<31-__builtin_clz(n),Info());
         lz.assign(4<<31-__builtin_clz(n),Tag());
         function<void(int,int,int)> build=[&](int l,int r,int i){
             if(l==r)return void(t[i]=a[l]);
@@ -44,7 +44,7 @@ struct LazySegTree{
         apply(m+1,r,i*2+1,lz[i]);
         lz[i]=Tag();
     }
-    void modify(int l,int r,int i,int x,const Node &v){
+    void modify(int l,int r,int i,int x,const Info &v){
         if(x<l||r<x)return;
         if(l==r)return void(t[i]=v);
         int m=(l+r)/2;
@@ -53,7 +53,7 @@ struct LazySegTree{
         modify(m+1,r,i*2+1,x,v);
         pull(i);
     }
-    void modify(int x,const Node &v){
+    void modify(int x,const Info &v){
         modify(0,n-1,1,x,v);
     }
     void update(int l,int r,int i,int x,int y,const Tag &v){
@@ -68,14 +68,14 @@ struct LazySegTree{
     void update(int x,int y,const Tag &v){
         update(0,n-1,1,x,y,v);
     }
-    Node query(int l,int r,int i,int x,int y){
-        if(y<l||r<x)return Node();
+    Info query(int l,int r,int i,int x,int y){
+        if(y<l||r<x)return Info();
         if(x<=l&&r<=y)return t[i];
         int m=(l+r)/2;
         push(l,r,i);
         return query(l,m,i*2,x,y)+query(m+1,r,i*2+1,x,y);
     }
-    Node query(int x,int y){
+    Info query(int x,int y){
         return query(0,n-1,1,x,y);
     }
     template<class F>

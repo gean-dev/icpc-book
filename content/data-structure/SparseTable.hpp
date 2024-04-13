@@ -1,3 +1,6 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Borworntat D.
  * Date: 2024-02-26
@@ -6,9 +9,6 @@
  *  SparseTable<T> s(vector<T>)
  *  s.query(l, r + 1)
  */
-
-#pragma once
-#include "../template/Header.hpp"
 
 template<class T>
 struct SparseTable {
@@ -26,3 +26,4 @@ struct SparseTable {
     return min(t[lg][l], t[lg][r - (1 << lg)]);
   }
 };
+

@@ -1,11 +1,12 @@
+#pragma once
+#include "graph.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2024-04-05
  * Description: Dijkstra algorithm for finding shortest path from single source in non-negative weighted graph.
  * Time: $O(E + V log V)$
  */
-#pragma once
-#include "graph.hpp"
 
 template<class T=int,bool directed=false>
 vector<T> dijkstra(const Graph<T,directed> &g,int source=0){
@@ -30,3 +31,4 @@ vector<T> dijkstra(const Graph<T,directed> &g,int source=0){
     }
     return dist;
 }
+

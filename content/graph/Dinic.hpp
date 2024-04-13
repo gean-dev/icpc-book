@@ -1,11 +1,12 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2024-03-31
  * Description: Fast max-flow algorithm.
  * Time: $O(VE\log U)$ where $U = \max |\text{cap}|$
  */
-#pragma once
-#include "../template/Header.hpp"
 
 template<class T>
 struct Dinic{
@@ -75,3 +76,4 @@ struct Dinic{
         return flow;
     }
 };
+

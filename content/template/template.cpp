@@ -23,5 +23,5 @@ const db EPS = 1e-9;
 const db PI = acos(db(-1));
 
 int main(){
-  cin.tie(nullptr)->sync_with_stdio(false);
+	cin.tie(nullptr)->sync_with_stdio(false);
 }

@@ -1,11 +1,12 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2024-03-17
  * Description: Fast Fourier transform
  * Time: $O(N \log N)$
  */
-#pragma once
-#include "../template/Header.hpp"
 
 template<class T=ll,int mod=0>
 struct FFT{
@@ -80,3 +81,4 @@ template<>
 struct FFT<db>{
 	static const bool INT=false;
 };
+

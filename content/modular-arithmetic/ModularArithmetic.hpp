@@ -1,10 +1,11 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2024-03-17
  * Description: modular arithmetic operations
  */
-#pragma once
-#include "../template/Header.hpp"
 
 template<ll M,ll root=0>
 struct Mint{
@@ -58,3 +59,4 @@ template<>
 ll Mint<0ll>::Mod=ll(1e18)+9;
 using mint = Mint<MOD,3>;
 using vm = vector<mint>;
+

@@ -1,11 +1,12 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2024-03-31
  * Description: minimum-cost flow algorithm.
  * Time: $O(FE\log{V})$ where $F$ is max flow.
  */
-#pragma once
-#include "../template/Header.hpp"
 
 template<class F,class C>
 struct MinCostFlow{
@@ -90,3 +91,4 @@ struct MinCostFlow{
         return {flow,cost};
     }
 };
+

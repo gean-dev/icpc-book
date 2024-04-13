@@ -1,11 +1,11 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2024-04-13
  * Description: template for revesible BBST.
  */
-
-#pragma once
-#include "../template/Header.hpp"
 
 template<class Tree,class Node,class T,T (*combine)(T,T),T (*flip)(T)>
 struct ReversibleBBST:Tree{
@@ -55,3 +55,4 @@ struct ReversibleBBST:Tree{
         t=merge(x.first,merge(y.first,y.second));
     }
 };
+

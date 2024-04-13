@@ -1,3 +1,6 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Borworntat D.
  * Date: 2024-01-06
@@ -13,8 +16,6 @@
  * The line `for (int i=idx; i<S+L; idx = (i += p))` is done on purpose for performance reasons.
  * See https://github.com/kth-competitive-programming/kactl/pull/166#discussion_r408354338
  */
-#pragma once
-#include "../template/Header.hpp"
 
 const int LIM = 1e6;
 bitset<LIM> isPrime;
@@ -49,3 +50,4 @@ vi eratosthenes() {
   }
   return pr;
 }
+

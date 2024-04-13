@@ -1,3 +1,6 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Teetat T.
  * Date: 2023-12-04
@@ -5,12 +8,10 @@
  * Description: Gaussian Elimination
  */
 
-#pragma once
-#include "../template/Header.hpp"
-struct gauss {
+struct Gauss {
   int n, sz;
   vector<ll> basis;
-  gauss(int n = 0) {
+  Gauss(int n = 0) {
     init(n);
   }
   void init(int _n) {
@@ -41,3 +42,4 @@ struct gauss {
     return res;
   }
 };
+

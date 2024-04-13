@@ -1,3 +1,6 @@
+#pragma once
+#include "FastEratosthenes.hpp"
+
 /**
  * Author: Borworntat D.
  * Date: 2023-12-02
@@ -6,8 +9,6 @@
  * Description: Find two prime numbers which sum equals $s$
  * Time: $O(N\log{N})$
  */
-#pragma once
-#include "FastEratosthenes.hpp"
 
 pair<int, int> goldbatchConjecture(int s, vi pr = {}){
   if (s <= 2 || s % 2 != 0) {
@@ -27,3 +28,4 @@ pair<int, int> goldbatchConjecture(int s, vi pr = {}){
   }
   return make_pair(-1, -1);
 }
+

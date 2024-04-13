@@ -1,3 +1,6 @@
+#pragma once
+#include "../template/Header.hpp"
+
 /**
  * Author: Borworntat D.
  * Date: 2024-01-06
@@ -6,9 +9,6 @@
  * Description: Prime Number Generator in Linear Time
  * Time: $O(N)$
  */
-
-#pragma once
-#include "../template/Header.hpp"
 
 vi linear_sieve(int n) {
   vi prime, composite(n + 1);
@@ -25,3 +25,4 @@ vi linear_sieve(int n) {
   }
   return prime;
 }
+

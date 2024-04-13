@@ -1,4 +1,3 @@
-#include <bits/stdc++.h>
 #include "../../content/data-structure/ReversibleSplayTree.hpp";
 
 using namespace std;

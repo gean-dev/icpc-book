@@ -1,12 +1,13 @@
+#pragma once
+#include "../template/Header.hpp"
+#include "../modular-arithmetic/BinPow.hpp"
+#include "../modular-arithmetic/MontgomeryModInt.hpp"
+
 /**
  * Author: Teetat T.
  * Description: Number theoretic transform
  * Time: $O(N \log N)$
  */
-#pragma once
-#include "../template/Header.hpp"
-#include "../modular-arithmetic/BinPow.hpp"
-#include "../modular-arithmetic/MontgomeryModInt.hpp"
 
 template<class mint=mint>
 struct NTT{
@@ -47,3 +48,4 @@ struct NTT{
 		return conv(a,b);
 	}
 };
+
