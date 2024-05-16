@@ -109,45 +109,4 @@ struct SparseSegmentTree{
         return findlast(lb,ub,rt,x,y,f);
     }
 };
-struct AddTag{
-    ll val;
-    AddTag():val(0){}
-    AddTag(ll v):val(v){}
-    void apply(ll l,ll r,const AddTag &v){
-        val+=v.val;
-    }
-};
-struct MaxNode{
-    ll val;
-    MaxNode():val(-LINF){}
-    MaxNode(ll x):val(x){}
-    void apply(ll l,ll r,const AddTag &v){
-        val+=v.val;
-    }
-    friend MaxNode operator+(const MaxNode &lhs,const MaxNode &rhs){
-        return MaxNode(max(lhs.val,rhs.val));
-    }
-};
-struct MinNode{
-    ll val;
-    MinNode():val(LINF){}
-    MinNode(ll v):val(v){}
-    void apply(ll l,ll r,const AddTag &v){
-        val+=v.val;
-    }
-    friend MinNode operator+(const MinNode &lhs,const MinNode &rhs){
-        return MinNode(min(lhs.val,rhs.val));
-    }
-};
-struct SumNode{
-    ll val;
-    SumNode():val(0){}
-    SumNode(ll v):val(v){}
-    void apply(ll l,ll r,const AddTag &v){
-        val+=v.val*(r-l+1);
-    }
-    friend SumNode operator+(const SumNode &lhs,const SumNode &rhs){
-        return SumNode(lhs.val+rhs.val);
-    }
-};
 
