@@ -9,7 +9,7 @@
  * Description: Splay Tree. splay(u) will make node u be the root of the tree in amortized O(log n) time.
  */
 
-template<typename MonoidAction>
+template<class MonoidAction>
 struct LazyReversibleSplayTreeNode{
     using Ptr = LazyReversibleSplayTreeNode*;
     using InfoMonoid = typename MonoidAction::InfoMonoid;
@@ -25,7 +25,7 @@ struct LazyReversibleSplayTreeNode{
         :l(),r(),p(),val(_val),sum(_val),revsum(_val),lz(_lz),size(1),rev(false){}
 };
 
-template<typename MonoidAction>
+template<class MonoidAction>
 struct LazyReversibleSplayTree
     : LazyReversibleBBST<SplayTreeBase<LazyReversibleSplayTreeNode<MonoidAction>>,
       LazyReversibleSplayTreeNode<MonoidAction>,MonoidAction>{

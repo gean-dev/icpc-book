@@ -1,5 +1,5 @@
-#include "monoid/add.hpp"
-#include "../../data-structure/ReversibleSplayTree.hpp"
+#include "../../content/monoid/Add.hpp"
+#include "../../content/data-structure/ReversibleSplayTree.hpp"
 
 int main(){
     cin.tie(nullptr)->sync_with_stdio(false);

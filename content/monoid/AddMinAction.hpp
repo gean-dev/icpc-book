@@ -9,7 +9,7 @@
  * Description: Add to Min Action class.
  */
 
-template<typename T>
+template<class T>
 struct AddMinAction{
     using InfoMonoid = MinMonoid<T>;
     using TagMonoid = AddMonoid<T>;

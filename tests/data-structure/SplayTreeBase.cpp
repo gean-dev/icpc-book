@@ -1,19 +1,13 @@
 #include "../../content/data-structure/ReversibleSplayTree.hpp";
+#include "../../content/monoid/Add.hpp";
 
 using namespace std;
 
-ll combine(ll l,ll r){
-    return l+r;
-}
-
-ll flip(ll x){
-    return x;
-}
-
 int main(){
     vector<ll> a{1,2,3,4};
-    ReversibleSplayTree<ll,combine,flip> s;
-    using Node = ReversibleSplayTree<ll,combine,flip>::Node;
+    using Tree = ReversibleSplayTree<AddMonoid<ll>>;
+    Tree s;
+    using Node = Tree::Node;
     using Ptr = Node*;
     Ptr root=s.build(a);
     assert(s.query(root,1,2)==5);

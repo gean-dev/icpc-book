@@ -7,7 +7,7 @@
  * Description: Set Monoid class.
  */
 
-template<typename T>
+template<class T>
 struct SetMonoid{
     using P = pair<T,bool>;
     using value_type = P;

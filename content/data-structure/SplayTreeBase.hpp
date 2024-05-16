@@ -7,7 +7,7 @@
  * Description: Splay Tree. splay(u) will make node u be the root of the tree in amortized O(log n) time.
  */
 
-template<typename Node>
+template<class Node>
 struct SplayTreeBase{
     using Ptr = Node*;
     bool is_root(Ptr t){

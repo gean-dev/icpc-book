@@ -9,7 +9,7 @@
  * Description: Add to Add & Count Monoid class.
  */
 
-template<typename T>
+template<class T>
 struct AddAddCountAction{
     using InfoMonoid = AddCountMonoid<T>;
     using TagMonoid = AddMonoid<T>;

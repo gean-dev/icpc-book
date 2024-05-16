@@ -2,7 +2,7 @@
 #include "../../content/template/Header.hpp"
 #include "../../content/monoid/AffineAddCountAction.hpp"
 #include "../../content/modular-arithmetic/MontgomeryModInt.hpp"
-#include "../../content/data-structure/LazySegmentTree.hpp"
+#include "../../content/data-structure/SparseSegmentTree.hpp"
 
 int main(){
     cin.tie(nullptr)->sync_with_stdio(false);
@@ -12,7 +12,8 @@ int main(){
     using Tag = AffineMonoid<mint>::value_type;
     vector<Info> a(n,Info(0,1));
     for(auto &x:a)cin >> x.first;
-    LazySegmentTree<AffineAddCountAction<mint>> seg(a);
+    SparseSegmentTree<AffineAddCountAction<mint>> seg(n);
+    for(int i=0;i<n;i++)seg.modify(i,a[i]);
     while(q--){
         int t;
         cin >> t;

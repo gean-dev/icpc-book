@@ -9,7 +9,7 @@
  * Description: Affine to Add & Count Action class.
  */
 
-template<typename T>
+template<class T>
 struct AffineAddCountAction{
     using InfoMonoid = AddCountMonoid<T>;
     using TagMonoid = AffineMonoid<T>;

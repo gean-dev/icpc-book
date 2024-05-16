@@ -7,7 +7,7 @@
  * Description: Max & Count Monoid class.
  */
 
-template<typename T>
+template<class T>
 struct MaxCountMonoid{
     using P = pair<T,int>;
     using value_type = P;

@@ -7,7 +7,7 @@
  * Description: Add Monoid class.
  */
 
-template<typename T>
+template<class T>
 struct AddMonoid{
     using value_type = T;
     static constexpr T op(const T &x,const T &y){return x+y;}

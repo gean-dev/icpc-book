@@ -7,7 +7,7 @@
  * Description: Max Monoid class.
  */
 
-template<typename T>
+template<class T>
 struct MaxMonoid{
     using value_type = T;
     static constexpr T op(const T &x,const T &y){return max(x,y);}

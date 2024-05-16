@@ -7,19 +7,20 @@
  * Description: Segment Tree
  */
 
-template<class Info>
+template<class Monoid>
 struct SegmentTree{
+    using T = typename Monoid::value_type;
     int n;
-    vector<Info> t;
+    vector<T> t;
     SegmentTree(){}
-    SegmentTree(int n,Info v=Info()){init(n,v);}
+    SegmentTree(int n,T v=Monoid::unit()){init(n,v);}
     template<class U>
     SegmentTree(const vector<U> &a){init(a);}
-    void init(int n,Info v=Info()){init(vector<Info>(n,v));}
+    void init(int n,T v=Monoid::unit()){init(vector<T>(n,v));}
     template<class U>
     void init(const vector<U> &a){
         n=sz(a);
-        t.assign(4<<31-__builtin_clz(n),Info());
+        t.assign(4<<31-__builtin_clz(n),Monoid::unit());
         function<void(int,int,int)> build=[&](int l,int r,int i){
             if(l==r)return void(t[i]=a[l]);
             int m=(l+r)/2;
@@ -30,9 +31,9 @@ struct SegmentTree{
         build(0,n-1,1);
     }
     void pull(int i){
-        t[i]=t[i*2]+t[i*2+1];
+        t[i]=Monoid::op(t[i*2],t[i*2+1]);
     }
-    void modify(int l,int r,int i,int x,const Info &v){
+    void modify(int l,int r,int i,int x,const T &v){
         if(x<l||r<x)return;
         if(l==r)return void(t[i]=v);
         int m=(l+r)/2;
@@ -40,13 +41,13 @@ struct SegmentTree{
         modify(m+1,r,i*2+1,x,v);
         pull(i);
     }
-    void modify(int x,const Info &v){
+    void modify(int x,const T &v){
         modify(0,n-1,1,x,v);
     }
     template<class U>
     void update(int l,int r,int i,int x,const U &v){
         if(x<l||r<x)return;
-        if(l==r)return void(t[i].apply(l,r,v));
+        if(l==r)return void(t[i]=Monoid::op(t[i],v));
         int m=(l+r)/2;
         update(l,m,i*2,x,v);
         update(m+1,r,i*2+1,x,v);
@@ -56,13 +57,13 @@ struct SegmentTree{
     void update(int x,const U &v){
         update(0,n-1,1,x,v);
     }
-    Info query(int l,int r,int i,int x,int y){
-        if(y<l||r<x)return Info();
+    T query(int l,int r,int i,int x,int y){
+        if(y<l||r<x)return Monoid::unit();
         if(x<=l&&r<=y)return t[i];
         int m=(l+r)/2;
-        return query(l,m,i*2,x,y)+query(m+1,r,i*2+1,x,y);
+        return Monoid::op(query(l,m,i*2,x,y),query(m+1,r,i*2+1,x,y));
     }
-    Info query(int x,int y){
+    T query(int x,int y){
         return query(0,n-1,1,x,y);
     }
     template<class F>
@@ -90,39 +91,6 @@ struct SegmentTree{
     template<class F>
     int findlast(int x,int y,const F &f){
         return findlast(0,n-1,1,x,y,f);
-    }
-};
-struct MaxNode{
-    ll val;
-    MaxNode():val(-LINF){}
-    MaxNode(ll x):val(x){}
-    void apply(int l,int r,ll x){
-        val+=x;
-    }
-    friend MaxNode operator+(const MaxNode &lhs,const MaxNode &rhs){
-        return MaxNode(max(lhs.val,rhs.val));
-    }
-};
-struct MinNode{
-    ll val;
-    MinNode():val(LINF){}
-    MinNode(ll x):val(x){}
-    void apply(int l,int r,ll x){
-        val+=x;
-    }
-    friend MinNode operator+(const MinNode &lhs,const MinNode &rhs){
-        return MinNode(min(lhs.val,rhs.val));
-    }
-};
-struct SumNode{
-    ll val;
-    SumNode():val(0){}
-    SumNode(ll x):val(x){}
-    void apply(int l,int r,ll x){
-        val+=x;
-    }
-    friend SumNode operator+(const SumNode &lhs,const SumNode &rhs){
-        return SumNode(lhs.val+rhs.val);
     }
 };
 

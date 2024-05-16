@@ -7,7 +7,7 @@
  * Description: Default Action class.
  */
 
-template<typename Monoid>
+template<class Monoid>
 struct DefaultAction{
     using InfoMonoid = Monoid;
     using TagMonoid = Monoid;

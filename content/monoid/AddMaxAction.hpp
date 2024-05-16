@@ -9,7 +9,7 @@
  * Description: Add to Max Action class.
  */
 
-template<typename T>
+template<class T>
 struct AddMaxAction{
     using InfoMonoid = MaxMonoid<T>;
     using TagMonoid = AddMonoid<T>;

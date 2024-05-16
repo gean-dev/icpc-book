@@ -7,7 +7,7 @@
  * Description: Segment Tree with Lazy Propagation
  */
 
-template<typename MonoidAction>
+template<class MonoidAction>
 struct LazySegmentTree{
     using InfoMonoid = typename MonoidAction::InfoMonoid;
     using TagMonoid = typename MonoidAction::TagMonoid;
@@ -38,21 +38,20 @@ struct LazySegmentTree{
     void pull(int i){
         t[i]=InfoMonoid::op(t[i*2],t[i*2+1]);
     }
-    void apply(int l,int r,int i,const Tag &v){
+    void apply(int i,const Tag &v){
         t[i]=MonoidAction::op(t[i],v);
         lz[i]=TagMonoid::op(lz[i],v);
     }
-    void push(int l,int r,int i){
-        int m=(l+r)/2;
-        apply(l,m,i*2,lz[i]);
-        apply(m+1,r,i*2+1,lz[i]);
+    void push(int i){
+        apply(i*2,lz[i]);
+        apply(i*2+1,lz[i]);
         lz[i]=TagMonoid::unit();
     }
     void modify(int l,int r,int i,int x,const Info &v){
         if(x<l||r<x)return;
         if(l==r)return void(t[i]=v);
         int m=(l+r)/2;
-        push(l,r,i);
+        push(i);
         modify(l,m,i*2,x,v);
         modify(m+1,r,i*2+1,x,v);
         pull(i);
@@ -62,9 +61,9 @@ struct LazySegmentTree{
     }
     void update(int l,int r,int i,int x,int y,const Tag &v){
         if(y<l||r<x)return;
-        if(x<=l&&r<=y)return apply(l,r,i,v);
+        if(x<=l&&r<=y)return apply(i,v);
         int m=(l+r)/2;
-        push(l,r,i);
+        push(i);
         update(l,m,i*2,x,y,v);
         update(m+1,r,i*2+1,x,y,v);
         pull(i);
@@ -76,7 +75,7 @@ struct LazySegmentTree{
         if(y<l||r<x)return InfoMonoid::unit();
         if(x<=l&&r<=y)return t[i];
         int m=(l+r)/2;
-        push(l,r,i);
+        push(i);
         return InfoMonoid::op(query(l,m,i*2,x,y),query(m+1,r,i*2+1,x,y));
     }
     Info query(int x,int y){
@@ -87,7 +86,7 @@ struct LazySegmentTree{
         if(y<l||r<x||!f(t[i]))return -1;
         if(l==r)return l;
         int m=(l+r)/2;
-        push(l,r,i);
+        push(i);
         int res=findfirst(l,m,i*2,x,y,f);
         if(res==-1)res=findfirst(m+1,r,i*2+1,x,y,f);
         return res;
@@ -101,7 +100,7 @@ struct LazySegmentTree{
         if(y<l||r<x||!f(t[i]))return -1;
         if(l==r)return l;
         int m=(l+r)/2;
-        push(l,r,i);
+        push(i);
         int res=findlast(m+1,r,i*2+1,x,y,f);
         if(res==-1)res=findlast(l,m,i*2,x,y,f);
         return res;

@@ -1,6 +1,6 @@
 #line 1 "dynamic_sequence_range_affine_range_sum_splay_tree.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum"
-#line 2 "/Users/tata/Desktop/gean-dev/icpc-book/content/template/Header.hpp"
+#line 2 "/Users/tata/Desktop/icpc-book/content/template/Header.hpp"
 #include <bits/stdc++.h>
 #define sz(x) (int)(x).size()
 #define all(x) (x).begin(), (x).end()
@@ -23,7 +23,7 @@ const db DINF = numeric_limits<db>::infinity();
 const db EPS = 1e-9;
 const db PI = acos(db(-1));
 
-#line 3 "/Users/tata/Desktop/gean-dev/icpc-book/content/modular-arithmetic/MontgomeryModInt.hpp"
+#line 3 "/Users/tata/Desktop/icpc-book/content/modular-arithmetic/MontgomeryModInt.hpp"
 
 /**
  * Author: Teetat T.
@@ -137,7 +137,7 @@ struct MontgomeryModInt{
 using mint = MontgomeryModInt<MOD,3>;
 using vm = vector<mint>;
 
-#line 3 "/Users/tata/Desktop/gean-dev/icpc-book/content/monoid/AddCount.hpp"
+#line 3 "/Users/tata/Desktop/icpc-book/content/monoid/AddCount.hpp"
 
 /**
  * Author: Teetat T.
@@ -145,7 +145,7 @@ using vm = vector<mint>;
  * Description: Add & Count Monoid class.
  */
 
-template<typename T>
+template<class T>
 struct AddCountMonoid{
     using P = pair<T,int>;
     using value_type = P;
@@ -157,7 +157,7 @@ struct AddCountMonoid{
     static constexpr P make(const T &x){return P(x,1);}
 };
 
-#line 3 "/Users/tata/Desktop/gean-dev/icpc-book/content/monoid/Affine.hpp"
+#line 3 "/Users/tata/Desktop/icpc-book/content/monoid/Affine.hpp"
 
 /**
  * Author: Teetat T.
@@ -165,7 +165,7 @@ struct AddCountMonoid{
  * Description: Affine Transfomation Monoid class.
  */
 
-template<typename T>
+template<class T>
 struct AffineMonoid{
     using P = pair<T,T>;
     using value_type = P;
@@ -178,7 +178,7 @@ struct AffineMonoid{
     }
 };
 
-#line 5 "/Users/tata/Desktop/gean-dev/icpc-book/content/monoid/AffineAddCountAction.hpp"
+#line 5 "/Users/tata/Desktop/icpc-book/content/monoid/AffineAddCountAction.hpp"
 
 /**
  * Author: Teetat T.
@@ -186,7 +186,7 @@ struct AffineMonoid{
  * Description: Affine to Add & Count Action class.
  */
 
-template<typename T>
+template<class T>
 struct AffineAddCountAction{
     using InfoMonoid = AddCountMonoid<T>;
     using TagMonoid = AffineMonoid<T>;
@@ -197,7 +197,7 @@ struct AffineAddCountAction{
     }
 };
 
-#line 3 "/Users/tata/Desktop/gean-dev/icpc-book/content/data-structure/SplayTreeBase.hpp"
+#line 3 "/Users/tata/Desktop/icpc-book/content/data-structure/SplayTreeBase.hpp"
 
 /**
  * Author: Teetat T.
@@ -205,7 +205,7 @@ struct AffineAddCountAction{
  * Description: Splay Tree. splay(u) will make node u be the root of the tree in amortized O(log n) time.
  */
 
-template<typename Node>
+template<class Node>
 struct SplayTreeBase{
     using Ptr = Node*;
     bool is_root(Ptr t){
@@ -319,7 +319,7 @@ struct SplayTreeBase{
     }
 };
 
-#line 3 "/Users/tata/Desktop/gean-dev/icpc-book/content/data-structure/LazyReversibleBBST.hpp"
+#line 3 "/Users/tata/Desktop/icpc-book/content/data-structure/LazyReversibleBBST.hpp"
 
 /**
  * Author: Teetat Info.
@@ -327,7 +327,7 @@ struct SplayTreeBase{
  * Description: template for revesible BBST.
  */
 
-template<typename Tree,typename Node,typename MonoidAction>
+template<class Tree,class Node,class MonoidAction>
 struct LazyReversibleBBST:Tree{
     using Tree::merge;
     using Tree::split;
@@ -409,7 +409,7 @@ struct LazyReversibleBBST:Tree{
     }
 };
 
-#line 5 "/Users/tata/Desktop/gean-dev/icpc-book/content/data-structure/LazyReversibleSplayTree.hpp"
+#line 5 "/Users/tata/Desktop/icpc-book/content/data-structure/LazyReversibleSplayTree.hpp"
 
 /**
  * Author: Teetat T.
@@ -417,7 +417,7 @@ struct LazyReversibleBBST:Tree{
  * Description: Splay Tree. splay(u) will make node u be the root of the tree in amortized O(log n) time.
  */
 
-template<typename MonoidAction>
+template<class MonoidAction>
 struct LazyReversibleSplayTreeNode{
     using Ptr = LazyReversibleSplayTreeNode*;
     using InfoMonoid = typename MonoidAction::InfoMonoid;
@@ -433,7 +433,7 @@ struct LazyReversibleSplayTreeNode{
         :l(),r(),p(),val(_val),sum(_val),revsum(_val),lz(_lz),size(1),rev(false){}
 };
 
-template<typename MonoidAction>
+template<class MonoidAction>
 struct LazyReversibleSplayTree
     : LazyReversibleBBST<SplayTreeBase<LazyReversibleSplayTreeNode<MonoidAction>>,
       LazyReversibleSplayTreeNode<MonoidAction>,MonoidAction>{

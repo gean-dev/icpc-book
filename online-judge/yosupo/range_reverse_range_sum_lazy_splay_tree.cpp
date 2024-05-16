@@ -1,6 +1,5 @@
-#include "monoid/add.hpp"
-#include "../../data-structure/LazyReversibleSplayTree.hpp"
-#include "../../monoid/add-add-count-action.hpp"
+#include "../../content/data-structure/LazyReversibleSplayTree.hpp"
+#include "../../content/monoid/AddAddCountAction.hpp"
 
 int main(){
     cin.tie(nullptr)->sync_with_stdio(false);

@@ -7,7 +7,7 @@
  * Description: template for revesible BBST.
  */
 
-template<typename Tree,typename Node,typename MonoidAction>
+template<class Tree,class Node,class MonoidAction>
 struct LazyReversibleBBST:Tree{
     using Tree::merge;
     using Tree::split;

@@ -9,7 +9,7 @@
  * Description: Add to Min & Count Action class.
  */
 
-template<typename T>
+template<class T>
 struct AddMinCountAction{
     using InfoMonoid = MinCountMonoid<T>;
     using TagMonoid = AddMonoid<T>;

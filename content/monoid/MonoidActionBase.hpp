@@ -4,10 +4,10 @@
 /**
  * Author: Teetat T.
  * Date: 2024-05-16
- * Description: Monoid Base class.
+ * Description: Monoid Action Base class.
  */
 
-template<typename InfoMonoid,typename TagMonoid,typename InfoMonoid::value_type
+template<class InfoMonoid,class TagMonoid,typename InfoMonoid::value_type
     (*combine)(typename InfoMonoid::value_type,typename TagMonoid::value_type)>
 struct MonoidActionBase{
     using Info = typename InfoMonoid::value_type;

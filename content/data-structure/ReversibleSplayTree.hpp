@@ -20,7 +20,7 @@ struct ReversibleSplayTreeNode{
         :l(),r(),p(),val(_val),sum(_val),revsum(_val),size(1),rev(false){}
 };
 
-template<typename Monoid>
+template<class Monoid>
 struct ReversibleSplayTree
     : ReversibleBBST<SplayTreeBase<ReversibleSplayTreeNode<typename Monoid::value_type>>,
       ReversibleSplayTreeNode<typename Monoid::value_type>,Monoid>{

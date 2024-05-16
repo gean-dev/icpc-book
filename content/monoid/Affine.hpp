@@ -7,7 +7,7 @@
  * Description: Affine Transfomation Monoid class.
  */
 
-template<typename T>
+template<class T>
 struct AffineMonoid{
     using P = pair<T,T>;
     using value_type = P;

@@ -7,7 +7,7 @@
  * Description: Add & Count Monoid class.
  */
 
-template<typename T>
+template<class T>
 struct AddCountMonoid{
     using P = pair<T,int>;
     using value_type = P;
