@@ -13,17 +13,17 @@ template<class T>
 struct ReversibleSplayTreeNode{
     using Ptr = ReversibleSplayTreeNode*;
     Ptr l,r,p;
-    T val,sum;
+    T val,sum,revsum;
     int size;
     bool rev;
-    ReversibleSplayTreeNode(const T &v=T())
-        :l(),r(),p(),val(v),sum(v),size(1),rev(false){}
+    ReversibleSplayTreeNode(const T &_val)
+        :l(),r(),p(),val(_val),sum(_val),revsum(_val),size(1),rev(false){}
 };
 
-template<class T,T (*combine)(T,T),T (*flip)(T)>
+template<typename Monoid>
 struct ReversibleSplayTree
-    : ReversibleBBST<SplayTreeBase<ReversibleSplayTreeNode<T>>,
-      ReversibleSplayTreeNode<T>,T,combine,flip>{
-    using Node = ReversibleSplayTreeNode<T>;
+    : ReversibleBBST<SplayTreeBase<ReversibleSplayTreeNode<typename Monoid::value_type>>,
+      ReversibleSplayTreeNode<typename Monoid::value_type>,Monoid>{
+    using Node = ReversibleSplayTreeNode<typename Monoid::value_type>;
 };
 

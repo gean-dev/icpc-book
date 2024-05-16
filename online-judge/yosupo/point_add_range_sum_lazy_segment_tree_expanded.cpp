@@ -1,5 +1,64 @@
-#pragma once
-#include "../template/Header.hpp"
+#line 1 "point_add_range_sum_lazy_segment_tree.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
+#line 2 "/Users/tata/Desktop/icpc-book/content/template/Header.hpp"
+#include <bits/stdc++.h>
+#define sz(x) (int)(x).size()
+#define all(x) (x).begin(), (x).end()
+
+using namespace std;
+
+using ll = long long;
+using db = long double;
+using vi = vector<int>;
+using vl = vector<ll>;
+using vd = vector<db>;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+using pdd = pair<db, db>;
+const int INF = 0x3fffffff;
+// const int MOD=1000000007;
+const int MOD = 998244353;
+const ll LINF = 0x1fffffffffffffff;
+const db DINF = numeric_limits<db>::infinity();
+const db EPS = 1e-9;
+const db PI = acos(db(-1));
+
+#line 3 "/Users/tata/Desktop/icpc-book/content/monoid/add.hpp"
+
+/**
+ * Author: Teetat T.
+ * Date: 2024-04-14
+ * Description: Add Monoid class.
+ */
+
+template<typename T>
+struct AddMonoid{
+    using value_type = T;
+    static constexpr T op(const T &x,const T &y){return x+y;}
+    static constexpr T inverse(const T &x){return -x;}
+    static constexpr T unit(){return T(0);}
+};
+
+#line 3 "/Users/tata/Desktop/icpc-book/content/monoid/DefaultAction.hpp"
+
+/**
+ * Author: Teetat T.
+ * Date: 2024-04-14
+ * Description: Default Action class.
+ */
+
+template<typename Monoid>
+struct DefaultAction{
+    using InfoMonoid = Monoid;
+    using TagMonoid = Monoid;
+    using Info = typename Monoid::value_type;
+    using Tag = typename Monoid::value_type;
+    static constexpr Info op(const Info &a,const Tag &b){
+        return Monoid::op(a,b);
+    }
+};
+
+#line 3 "/Users/tata/Desktop/icpc-book/content/data-structure/LazySegmentTree.hpp"
 
 /**
  * Author: Teetat T.
@@ -112,3 +171,27 @@ struct LazySegmentTree{
     }
 };
 
+#line 6 "point_add_range_sum_lazy_segment_tree.cpp"
+
+int main(){
+    cin.tie(nullptr)->sync_with_stdio(false);
+    int n,q;
+    cin >> n >> q;
+    vector<ll> a(n);
+    for(auto &x:a)cin>>x;
+    LazySegmentTree<DefaultAction<AddMonoid<ll>>> seg(a);
+    while(q--){
+        int t;
+        cin>>t;
+        if(t==0){
+            int p,x;
+            cin>>p>>x;
+            seg.update(p,p,x);
+        }else{
+            int l,r;
+            cin >> l >> r;
+            r--;
+            cout << seg.query(l,r) << "\n";
+        }
+    }
+}

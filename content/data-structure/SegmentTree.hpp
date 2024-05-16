@@ -13,11 +13,11 @@ struct SegmentTree{
     vector<Info> t;
     SegmentTree(){}
     SegmentTree(int n,Info v=Info()){init(n,v);}
-    template<class T>
-    SegmentTree(const vector<T> &a){init(a);}
+    template<class U>
+    SegmentTree(const vector<U> &a){init(a);}
     void init(int n,Info v=Info()){init(vector<Info>(n,v));}
-    template<class T>
-    void init(const vector<T> &a){
+    template<class U>
+    void init(const vector<U> &a){
         n=sz(a);
         t.assign(4<<31-__builtin_clz(n),Info());
         function<void(int,int,int)> build=[&](int l,int r,int i){
@@ -43,8 +43,8 @@ struct SegmentTree{
     void modify(int x,const Info &v){
         modify(0,n-1,1,x,v);
     }
-    template<class T>
-    void update(int l,int r,int i,int x,const T &v){
+    template<class U>
+    void update(int l,int r,int i,int x,const U &v){
         if(x<l||r<x)return;
         if(l==r)return void(t[i].apply(l,r,v));
         int m=(l+r)/2;
@@ -52,8 +52,8 @@ struct SegmentTree{
         update(m+1,r,i*2+1,x,v);
         pull(i);
     }
-    template<class T>
-    void update(int x,const T &v){
+    template<class U>
+    void update(int x,const U &v){
         update(0,n-1,1,x,v);
     }
     Info query(int l,int r,int i,int x,int y){

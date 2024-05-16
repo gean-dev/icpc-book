@@ -7,7 +7,7 @@
  * Description: Splay Tree. splay(u) will make node u be the root of the tree in amortized O(log n) time.
  */
 
-template<class Node>
+template<typename Node>
 struct SplayTreeBase{
     using Ptr = Node*;
     bool is_root(Ptr t){
@@ -28,14 +28,14 @@ struct SplayTreeBase{
     void rotate(Ptr t){
         Ptr x=t->p,y=x->p;
         if(pos(t)==-1){
-            if(x->l=t->r)t->r->p=x;
+            if((x->l=t->r))t->r->p=x;
             t->r=x,x->p=t;
         }else{
-            if(x->r=t->l)t->l->p=x;
+            if((x->r=t->l))t->l->p=x;
             t->l=x,x->p=t;
         }
         pull(x),pull(t);
-        if(t->p=y){
+        if((t->p=y)){
             if(y->l==x)y->l=t;
             if(y->r==x)y->r=t;
         }
@@ -58,10 +58,12 @@ struct SplayTreeBase{
     }
     Ptr get_first(Ptr t){
         while(t->l)push(t),t=t->l;
+        splay(t);
         return t;
     }
     Ptr get_last(Ptr t){
         while(t->r)push(t),t=t->r;
+        splay(t);
         return t;
     }
     Ptr merge(Ptr l,Ptr r){
@@ -69,7 +71,6 @@ struct SplayTreeBase{
         if(!l)return r;
         if(!r)return l;
         l=get_last(l);
-        splay(l);
         l->r=r;
         r->p=l;
         pull(l);
@@ -104,8 +105,8 @@ struct SplayTreeBase{
     void erase(Ptr &t,int k){
         splay(t);
         auto x=split(t,k);
-        auto y=x.split(x.second,1);
-        delete y.first;
+        auto y=split(x.second,1);
+        // delete y.first;
         t=merge(x.first,y.second);
     }
     template<class T>

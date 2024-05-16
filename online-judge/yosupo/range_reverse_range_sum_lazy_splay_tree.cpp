@@ -1,13 +1,14 @@
 #include "monoid/add.hpp"
-#include "../../data-structure/ReversibleSplayTree.hpp"
+#include "../../data-structure/LazyReversibleSplayTree.hpp"
+#include "../../monoid/add-add-count-action.hpp"
 
 int main(){
     cin.tie(nullptr)->sync_with_stdio(false);
     int n,q;
     cin >> n >> q;
-    vector<ll> a(n);
-    for(auto &x:a)cin >> x;
-    using Tree = ReversibleSplayTree<AddMonoid<ll>>;
+    vector<pair<ll,int>> a(n,pair<ll,int>(0,1));
+    for(auto &x:a)cin >> x.first;
+    using Tree = LazyReversibleSplayTree<AddAddCountAction<ll>>;
     Tree s;
     using Node = Tree::Node;
     using Ptr = Node*;
@@ -17,7 +18,7 @@ int main(){
         cin >> t >> l >> r;
         r--;
         if(t){
-            cout << s.query(root,l,r) << "\n";
+            cout << s.query(root,l,r).first << "\n";
         }else{
             s.reverse(root,l,r);
         }

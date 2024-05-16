@@ -7,11 +7,12 @@
  * Description: template for revesible BBST.
  */
 
-template<class Tree,class Node,class T,T (*combine)(T,T),T (*flip)(T)>
+template<typename Tree,typename Node,typename Monoid>
 struct ReversibleBBST:Tree{
     using Tree::merge;
     using Tree::split;
-    using Ptr = Node*;
+    using typename Tree::Ptr;
+    using T = typename Monoid::value_type;
 
     ReversibleBBST()=default;
 
@@ -22,8 +23,17 @@ struct ReversibleBBST:Tree{
         if(!t)return;
         t->size=1;
         t->sum=t->val;
-        if(t->l)t->size+=t->l->size,t->sum=combine(t->l->sum,t->sum);
-        if(t->r)t->size+=t->r->size,t->sum=combine(t->sum,t->r->sum);
+        t->revsum=t->val;
+        if(t->l){
+            t->size+=t->l->size;
+            t->sum=Monoid::op(t->l->sum,t->sum);
+            t->revsum=Monoid::op(t->revsum,t->l->revsum);
+        }
+        if(t->r){
+            t->size+=t->r->size;
+            t->sum=Monoid::op(t->sum,t->r->sum);
+            t->revsum=Monoid::op(t->r->revsum,t->revsum);
+        }
     }
     void push(Ptr t){
         if(!t)return;
@@ -36,7 +46,7 @@ struct ReversibleBBST:Tree{
     void toggle(Ptr t){
         if(!t)return;
         swap(t->l,t->r);
-        t->sum=flip(t->sum);
+        swap(t->sum,t->revsum);
         t->rev^=true;
     }
     T query(Ptr &t,int l,int r){
