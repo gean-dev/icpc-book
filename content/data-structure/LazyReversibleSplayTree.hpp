@@ -16,6 +16,7 @@ struct LazyReversibleSplayTreeNode{
     using TagMonoid = typename MonoidAction::TagMonoid;
     using Info = typename MonoidAction::Info;
     using Tag = typename MonoidAction::Tag;
+    using value_type = Info;
     Ptr l,r,p;
     Info val,sum,revsum;
     Tag lz;

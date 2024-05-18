@@ -12,6 +12,7 @@
 template<class T>
 struct ReversibleSplayTreeNode{
     using Ptr = ReversibleSplayTreeNode*;
+	using value_type = T;
     Ptr l,r,p;
     T val,sum,revsum;
     int size;
