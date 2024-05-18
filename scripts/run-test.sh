@@ -12,7 +12,7 @@ startTime=`date +%s.%N`
 
 for test in $tests; do
   echo "$(basename $test): "
-  g++-13 -Wall -Wfatal-errors -Wconversion -std=c++2a -O2 $test && ./a.out
+  g++ -Wall -Wfatal-errors -Wconversion -std=c++2a -O2 $test && ./a.out
   res=$?
   if (($res != 0)); then
     echo "Failed with $res"
