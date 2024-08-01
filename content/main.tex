@@ -8,23 +8,23 @@
 \enablecolors
 
 \begin{document}
-	\maketeampage
+  \maketeampage
+  \begin{multicols*}{3}
+    \thispagestyle{fancy}
+    \setcounter{tocdepth}{0}
+    \tableofcontents
+
+    \kactlchapter{template}
+    \kactlchapter{math}
+    \kactlchapter{numerical}
+    \kactlchapter{data-structure}
+    \kactlchapter{number-theory}
+    \kactlchapter{graph}
+    \kactlchapter{polynomials}
+    \kactlchapter{various}
+  \end{multicols*}
+
 	\begin{multicols*}{3}
-	\thispagestyle{fancy}
-	\setcounter{tocdepth}{0}
-	\tableofcontents
-
-  \kactlchapter{template}
-  \kactlchapter{math}
-  \kactlchapter{numerical}
-	\kactlchapter{data-structure}
-	\kactlchapter{number-theory}
-	\kactlchapter{graph}
-	\kactlchapter{polynomials}
-  \kactlchapter{various}
+	  \kactlchapter{appendix}
 	\end{multicols*}
-
-	% \begin{multicols*}{3}
-	% \kactlchapter{appendix}
-	% \end{multicols*}
 \end{document}
