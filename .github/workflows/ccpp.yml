@@ -23,9 +23,4 @@ jobs:
         run: make test-all
       - name: Make Book
         run: make book
-      - name: Commit Book
-        run: |
-          git add book.pdf
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -m "Update book.pdf"
-          git push
+      - uses: stefanzweifel/git-auto-commit-action@v5
