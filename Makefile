@@ -14,7 +14,7 @@ fast: | build
 	cp build/main.pdf main.pdf
 book: | build
 	$(LATEXCMD) content/main.tex && $(LATEXCMD) content/main.tex
-	cp build/main.pdf main.pdf
+	cp build/main.pdf book.pdf
 build:
 	mkdir -p build
 clean:
