@@ -2,9 +2,9 @@ name: C/C++ CI
 
 on:
   push:
-    branches: "*"
+    branches: [main]
   pull_request:
-    branches: "*"
+    branches: [main]
 
 jobs:
   build:
@@ -23,3 +23,9 @@ jobs:
         run: make test-all
       - name: Make Book
         run: make book
+      - name: Commit Book
+        run: |
+          git add book.pdf
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update book.pdf"
+          git push
