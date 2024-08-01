@@ -5,7 +5,7 @@
  * Author: Borworntat D.
  * Date: 2024-08-02
  * License: CC0
- * Description: \textbf{less<T>} can be changed to \textbf{less_equal<T>} for multi ordered set.
+ * Description: less can be changed to less_equal for multi ordered set.
  */
 
 #include <bits/extc++.h>
