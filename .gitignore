@@ -3,6 +3,7 @@ build/
 
 *.bin
 .cph/
+*.exe
 
 *.tmp
 
