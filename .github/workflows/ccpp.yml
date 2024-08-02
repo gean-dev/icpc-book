@@ -2,14 +2,16 @@ name: C/C++ CI
 
 on:
   push:
-    branches: "*"
+    branches: [main]
   pull_request:
-    branches: "*"
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v2
@@ -23,3 +25,4 @@ jobs:
         run: make test-all
       - name: Make Book
         run: make book
+      - uses: stefanzweifel/git-auto-commit-action@v5
