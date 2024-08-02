@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include "../../content/template/Header.hpp"
 #include "../../content/number-theory/FastEratosthenes.hpp"
 #include "../../content/number-theory/GolbatchConjecture.hpp"
 

@@ -1,6 +1,6 @@
-#line 1 "dynamic_sequence_range_affine_range_sum_splay_tree.cpp"
+#line 1 "online-judge\\yosupo\\dynamic_sequence_range_affine_range_sum_splay_tree.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum"
-#line 2 "/Users/tata/Desktop/icpc-book/content/template/Header.hpp"
+#line 2 "content\\template\\Header.hpp"
 #include <bits/stdc++.h>
 #define sz(x) (int)(x).size()
 #define all(x) (x).begin(), (x).end()
@@ -23,7 +23,7 @@ const db DINF = numeric_limits<db>::infinity();
 const db EPS = 1e-9;
 const db PI = acos(db(-1));
 
-#line 3 "/Users/tata/Desktop/icpc-book/content/modular-arithmetic/MontgomeryModInt.hpp"
+#line 3 "content\\modular-arithmetic\\MontgomeryModInt.hpp"
 
 /**
  * Author: Teetat T.
@@ -137,7 +137,7 @@ struct MontgomeryModInt{
 using mint = MontgomeryModInt<MOD,3>;
 using vm = vector<mint>;
 
-#line 3 "/Users/tata/Desktop/icpc-book/content/monoid/AddCount.hpp"
+#line 3 "content\\monoid\\AddCount.hpp"
 
 /**
  * Author: Teetat T.
@@ -157,7 +157,7 @@ struct AddCountMonoid{
     static constexpr P make(const T &x){return P(x,1);}
 };
 
-#line 3 "/Users/tata/Desktop/icpc-book/content/monoid/Affine.hpp"
+#line 3 "content\\monoid\\Affine.hpp"
 
 /**
  * Author: Teetat T.
@@ -178,7 +178,7 @@ struct AffineMonoid{
     }
 };
 
-#line 5 "/Users/tata/Desktop/icpc-book/content/monoid/AffineAddCountAction.hpp"
+#line 5 "content\\monoid\\AffineAddCountAction.hpp"
 
 /**
  * Author: Teetat T.
@@ -197,7 +197,7 @@ struct AffineAddCountAction{
     }
 };
 
-#line 3 "/Users/tata/Desktop/icpc-book/content/data-structure/SplayTreeBase.hpp"
+#line 3 "content\\data-structure\\SplayTreeBase.hpp"
 
 /**
  * Author: Teetat T.
@@ -319,7 +319,7 @@ struct SplayTreeBase{
     }
 };
 
-#line 3 "/Users/tata/Desktop/icpc-book/content/data-structure/LazyReversibleBBST.hpp"
+#line 3 "content\\data-structure\\LazyReversibleBBST.hpp"
 
 /**
  * Author: Teetat Info.
@@ -409,7 +409,7 @@ struct LazyReversibleBBST:Tree{
     }
 };
 
-#line 5 "/Users/tata/Desktop/icpc-book/content/data-structure/LazyReversibleSplayTree.hpp"
+#line 5 "content\\data-structure\\LazyReversibleSplayTree.hpp"
 
 /**
  * Author: Teetat T.
@@ -424,6 +424,7 @@ struct LazyReversibleSplayTreeNode{
     using TagMonoid = typename MonoidAction::TagMonoid;
     using Info = typename MonoidAction::Info;
     using Tag = typename MonoidAction::Tag;
+    using value_type = Info;
     Ptr l,r,p;
     Info val,sum,revsum;
     Tag lz;
@@ -440,7 +441,7 @@ struct LazyReversibleSplayTree
     using Node = LazyReversibleSplayTreeNode<MonoidAction>;
 };
 
-#line 6 "dynamic_sequence_range_affine_range_sum_splay_tree.cpp"
+#line 6 "online-judge\\yosupo\\dynamic_sequence_range_affine_range_sum_splay_tree.cpp"
 
 int main(){
     cin.tie(nullptr)->sync_with_stdio(false);

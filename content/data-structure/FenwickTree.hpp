@@ -1,5 +1,4 @@
 #pragma once
-#include "../template/Header.hpp"
 
 /**
  * Author: Teetat T.
@@ -9,12 +8,22 @@
 
 template<class T>
 struct Fenwick{
-    int n;
+    int n,logn;
     vector<T> t;
-    Fenwick(int n=0){init(n);}
-    void init(int _n){
-        n=_n;
+    Fenwick(){}
+    Fenwick(int _n){init(vector<T>(_n,T{}));}
+    template<class U>
+    Fenwick(const vector<U> &a){init(a);}
+    template<class U>
+    void init(const vector<U> &a){
+        n=(int)a.size();
+        logn=31-__builtin_clz(n);
         t.assign(n+1,T{});
+        for(int i=1;i<=n;i++){
+            t[i]=t[i]+a[i-1];
+            int j=i+(i&-i);
+            if(j<=n)t[j]=t[j]+t[i];
+        }
     }
     void update(int x,const T &v){
         for(int i=x+1;i<=n;i+=i&-i)t[i]=t[i]+v;
@@ -33,8 +42,8 @@ struct Fenwick{
     int find(const T &k){
         int x=0;
         T cur{};
-        for(int i=1<<31-__builtin_clz(n);i>0;i>>=1)
-            if(x+i<=n&&cur+t[x+i]<k)x+=i,cur=cur+t[x];
+        for(int i=1<<logn;i>0;i>>=1)
+            if(x+i<=n&&cur+t[x+i]<=k)x+=i,cur=cur+t[x];
         return x;
     }
 };

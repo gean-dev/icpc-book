@@ -1,4 +1,3 @@
-#include <bits/stdc++.h>
 #include "../../content/template/Header.hpp"
 #include "../../content/polynomials/FormalPowerSeries.hpp"
 

@@ -1,5 +1,4 @@
 #pragma once
-#include "../template/Header.hpp"
 
 /**
  * Author: Teetat T.
@@ -13,16 +12,15 @@ struct SegmentTree{
     int n;
     vector<T> t;
     SegmentTree(){}
-    SegmentTree(int n,T v=Monoid::unit()){init(n,v);}
+    SegmentTree(int n,function<T(int)> create){init(n,create);}
+    SegmentTree(int n,T v=Monoid::unit()){init(n,[&](int){return v;});}
     template<class U>
-    SegmentTree(const vector<U> &a){init(a);}
-    void init(int n,T v=Monoid::unit()){init(vector<T>(n,v));}
-    template<class U>
-    void init(const vector<U> &a){
-        n=sz(a);
-        t.assign(4<<31-__builtin_clz(n),Monoid::unit());
+    SegmentTree(const vector<U> &a){init((int)a.size(),[&](int i){return T(a[i]);});}
+    void init(int _n,function<T(int)> create){
+        n=_n;
+        t.assign(4<<(31-__builtin_clz(n)),Monoid::unit());
         function<void(int,int,int)> build=[&](int l,int r,int i){
-            if(l==r)return void(t[i]=a[l]);
+            if(l==r)return void(t[i]=create(l));
             int m=(l+r)/2;
             build(l,m,i*2);
             build(m+1,r,i*2+1);
@@ -68,11 +66,11 @@ struct SegmentTree{
     }
     template<class F>
     int findfirst(int l,int r,int i,int x,int y,const F &f){
-        if(y<l||r<x||!f(t[i]))return -1;
+        if(y<l||r<x||!f(t[i]))return n;
         if(l==r)return l;
         int m=(l+r)/2;
         int res=findfirst(l,m,i*2,x,y,f);
-        if(res==-1)res=findfirst(m+1,r,i*2+1,x,y,f);
+        if(res==n)res=findfirst(m+1,r,i*2+1,x,y,f);
         return res;
     }
     template<class F>

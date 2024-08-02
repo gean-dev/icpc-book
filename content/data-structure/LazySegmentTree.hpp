@@ -1,5 +1,4 @@
 #pragma once
-#include "../template/Header.hpp"
 
 /**
  * Author: Teetat T.
@@ -17,17 +16,17 @@ struct LazySegmentTree{
     vector<Info> t;
     vector<Tag> lz;
     LazySegmentTree(){}
-    LazySegmentTree(int n,Info v=InfoMonoid::unit()){init(n,v);}
+    LazySegmentTree(int n,function<Info(int)> create){init(n,create);}
+    LazySegmentTree(int n,Info v=InfoMonoid::unit()){init(n,[&](int){return v;});}
     template<class T>
-    LazySegmentTree(const vector<T> &a){init(a);}
-    void init(int n,Info v=InfoMonoid::unit()){init(vector<Info>(n,v));}
-    template<class T>
-    void init(const vector<T> &a){
-        n=sz(a);
-        t.assign(4<<31-__builtin_clz(n),InfoMonoid::unit());
-        lz.assign(4<<31-__builtin_clz(n),TagMonoid::unit());
+    LazySegmentTree(const vector<T> &a){init((int)a.size(),[&](int i){return Info(a[i]);});}
+    void init(int _n,function<Info(int)> create){
+        n=_n;
+        int m=4<<(31-__builtin_clz(n));
+        t.assign(m,InfoMonoid::unit());
+        lz.assign(m,TagMonoid::unit());
         function<void(int,int,int)> build=[&](int l,int r,int i){
-            if(l==r)return void(t[i]=a[l]);
+            if(l==r)return void(t[i]=create(l));
             int m=(l+r)/2;
             build(l,m,i*2);
             build(m+1,r,i*2+1);
@@ -83,12 +82,12 @@ struct LazySegmentTree{
     }
     template<class F>
     int findfirst(int l,int r,int i,int x,int y,const F &f){
-        if(y<l||r<x||!f(t[i]))return -1;
+        if(y<l||r<x||!f(t[i]))return n;
         if(l==r)return l;
         int m=(l+r)/2;
         push(i);
         int res=findfirst(l,m,i*2,x,y,f);
-        if(res==-1)res=findfirst(m+1,r,i*2+1,x,y,f);
+        if(res==n)res=findfirst(m+1,r,i*2+1,x,y,f);
         return res;
     }
     template<class F>

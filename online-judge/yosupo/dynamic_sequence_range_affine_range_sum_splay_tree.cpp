@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum"
-#include "../../content/template/Header.hpp"
-#include "../../content/modular-arithmetic/MontgomeryModInt.hpp"
-#include "../../content/monoid/AffineAddCountAction.hpp"
-#include "../../content/data-structure/LazyReversibleSplayTree.hpp"
+#include "template/Header.hpp"
+#include "modular-arithmetic/MontgomeryModInt.hpp"
+#include "monoid/AffineAddCountAction.hpp"
+#include "data-structure/LazyReversibleSplayTree.hpp"
 
 int main(){
     cin.tie(nullptr)->sync_with_stdio(false);

@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include "../../content/template/Header.hpp"
 #include "../../content/modular-arithmetic/Combinatorics.hpp"
 
 using namespace std;

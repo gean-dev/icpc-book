@@ -1,10 +1,9 @@
 #pragma once
-#include "../template/Header.hpp"
 
 /**
  * Author: Teetat T.
  * Date: 2024-04-13
- * Description: template for revesible BBST.
+ * Description: Revesible BBST Base.
  */
 
 template<class Tree,class Node,class Monoid>

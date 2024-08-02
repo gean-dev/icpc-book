@@ -1,12 +1,11 @@
 #pragma once
-#include "../template/Header.hpp"
 #include "SplayTreeBase.hpp"
 #include "ReversibleBBST.hpp"
 
 /**
  * Author: Teetat T.
  * Date: 2024-04-13
- * Description: Splay Tree. splay(u) will make node u be the root of the tree in amortized O(log n) time.
+ * Description: Reversible Splay Tree.
  */
 
 template<class T>

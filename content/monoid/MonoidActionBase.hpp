@@ -7,9 +7,11 @@
  * Description: Monoid Action Base class.
  */
 
-template<class InfoMonoid,class TagMonoid,typename InfoMonoid::value_type
-    (*combine)(typename InfoMonoid::value_type,typename TagMonoid::value_type)>
+template<class MInfo,class MTag,typename MInfo::value_type
+    (*combine)(typename MInfo::value_type,typename MTag::value_type)>
 struct MonoidActionBase{
+    using InfoMonoid = MInfo;
+    using TagMonoid = MTag;
     using Info = typename InfoMonoid::value_type;
     using Tag = typename TagMonoid::value_type;
     static constexpr Info op(const Info &a,const Tag &b){

@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include "../../content/template/Header.hpp"
 #include "../../content/graph/HopcroftKarp.hpp"
 
 using namespace std;
