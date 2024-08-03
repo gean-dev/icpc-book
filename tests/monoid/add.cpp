@@ -1,5 +1,5 @@
 #include "../../content/template/Header.hpp"
-#include "../../content/monoid/Add.hpp"
+#include "../../content/group/monoid/Add.hpp"
 
 int main(){
   assert(AddMonoid<int>::op(1,2)==3);

@@ -1,6 +1,6 @@
 #include "../../content/template/Header.hpp"
 #include "../../content/data-structure/ReversibleSplayTree.hpp"
-#include "../../content/monoid/Add.hpp"
+#include "../../content/group/monoid/Add.hpp"
 
 using namespace std;
 

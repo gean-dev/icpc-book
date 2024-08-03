@@ -1,6 +1,6 @@
 #include "../../content/template/Header.hpp"
 #include "../../content/data-structure/SparseTable.hpp"
-#include "../../content/monoid/Min.hpp"
+#include "../../content/group/monoid/Min.hpp"
 
 int main() {
   vector<int> a = {1, 3, 2, 4, 2, 9, 2};
