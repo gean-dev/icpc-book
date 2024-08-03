@@ -18,4 +18,3 @@ struct MonoidActionBase{
         return combine(a,b);
     }
 };
-
