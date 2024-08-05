@@ -5,7 +5,7 @@
  * Author: Teetat T.
  * Date: 2024-07-29
  * Description: Bitwise XOR Convolution.
- * Fast Walsh-Hadamard Transform: $A^\prime[S]=\sum_T(-1)^{|S\oplus T|}A[T]$.
+ * Fast Walsh-Hadamard Transform: $A^\prime[S]=\sum_T(-1)^{|S\& T|}A[T]$.
  * Time: $O(N\log N)$.
  */
 
