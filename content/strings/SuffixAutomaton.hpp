@@ -3,12 +3,12 @@
 /**
  * Author: Teetat T.
  * Date: 2024-06-14
- * Description: Suffix Automaton.
- * Find whether a string $t$ is a substring of a string $s$ by traversing the automaton.
- * Find whether a string $t$ is a suffix of a string $s$ by checking whether the last node is a terminal node.
- * Find the number of distinct substrings of a string $s$ by calculating the number of distinc path using DP.
- * Count the number of occurrences of string $t$ in string $s$. Let $p$ be the node we end up at after traversing $t$ in the automaton. The answer is the number of paths from $p$ to terminal nodes.
- * Find first occurrence of string $t$ in string $s$ by calculating the longest path in the automaton after reaching node $p$.
+ * Description: Suffix Automaton.\\
+ * Find whether a string $t$ is a substring of a string $s$ by traversing the automaton.\\
+ * Find whether a string $t$ is a suffix of a string $s$ by checking whether the last node is a terminal node.\\
+ * Find the number of distinct substrings of a string $s$ by calculating the number of distinc path using DP.\\
+ * Count the number of occurrences of string $t$ in string $s$. Let $p$ be the node we end up at after traversing $t$ in the automaton. The answer is the number of paths from $p$ to terminal nodes.\\
+ * Find first occurrence of string $t$ in string $s$ by calculating the longest path in the automaton after reaching node $p$.\\
  */
 
 template<class STR>
