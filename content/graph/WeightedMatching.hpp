@@ -17,12 +17,13 @@
 pair<ll, vector<int>> hungarian(const vector<vector<ll>> &a) {
 	if (a.empty()) return {0, {}};
 	int n = a.size() + 1, m = a[0].size() + 1;
-	vector<ll> u(n), v(m), p(m);
-    vector<int> ans(n - 1);
+	vector<ll> u(n), v(m);
+    vector<int> p(m), ans(n - 1);
 	for(int i=1;i<n;i++) {
 		p[0] = i;
 		int j0 = 0; // add "dummy" worker 0
-		vector<ll> dist(m, LLONG_MAX), pre(m, -1);
+		vector<ll> dist(m, LLONG_MAX);
+        vector<int> pre(m, -1);
 		vector<bool> done(m + 1);
 		do { // dijkstra
 			done[j0] = true;

@@ -9,7 +9,7 @@
  */
 
 template<class F>
-void xor_range(ll p,ll l,ll r,const F &query){
+void range_xor(ll p,ll l,ll r,const F &query){
     for(int i=0;i<60;i++){
         if(l==r)break;
         ll b=1LL<<i;
