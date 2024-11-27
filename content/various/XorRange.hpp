@@ -3,7 +3,8 @@
 /**
  * Author: Teetat T.
  * Date: 2024-11-27
- * Description: find all range of $x$ such that $l \le x$ xor $p < r$.
+ * License: CC0
+ * Description: find all range of x such that l <= x^p < r.
  */
 
 template<class F>
@@ -24,3 +25,4 @@ void xor_range(ll p,ll l,ll r,const F &query){
         }
     }
 }
+
