@@ -5,7 +5,7 @@
  * Author: Teetat T.
  * Date: 2024-11-27
  * License: CC0
- * Description: find all range of x such that l <= x^p < r.
+ * Description: find all range of x such that l <= x xor p < r.
  */
 
 template<class F>
