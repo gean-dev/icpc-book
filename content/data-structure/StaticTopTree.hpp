@@ -160,7 +160,7 @@ struct StaticTopTreeRerootingDP{
         return res;
     }
     Path query_reroot(int u){
-        auto rec=[&](auto &&rec,int u)->Point{
+        auto rec=[&](auto &&rec,int u)->Point {
             int p=stt.par[u];
             Path below=Path::unit(),above=Path::unit();
             while(p!=-1&&stt.type[p]==stt.Compress){

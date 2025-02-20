@@ -107,6 +107,7 @@
         "stop_token": "cpp",
         "syncstream": "cpp",
         "__verbose_abort": "cpp",
-        "climits": "cpp"
+        "climits": "cpp",
+        "rope": "cpp"
     }
 }
